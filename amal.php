@@ -132,27 +132,26 @@ require_once "app.php";
                             <span class="tag"><a href="#">Pemberdayaan</a></span>
                         </center>
                         <div class="zakatsekarang">
-                            <form method="POST" id="formtambahdonasi" action="#">
-                                <input type="hidden" name="_token" value="7pglCeEvEo2xBioncD7opPQEuRkpAw0kkRBMZGxS">
-                                <fieldset>
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <div class="input-group-text">Rp.</div>
-                                        </div>
-                                        <input type="hidden" name="id" value="13">
-                                        <input type="text" autocomplete="off" class="form-control" step="1000" min="0" id="jumlahdonasi" name="jumlah">
+                            <input type="hidden" name="_token" value="7pglCeEvEo2xBioncD7opPQEuRkpAw0kkRBMZGxS">
+                            <fieldset>
+                                <div class="input-group mb-3">
+                                    <input type="text" autocomplete="off" class="form-control" id="namaDonatur" placeholder="Masukan Nama Anda">
+                                </div>
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <div class="input-group-text">Rp.</div>
                                     </div>
-                                    <div class="slidecontainer">
-                                    </div><br>
-                                    <textarea name="comment" class="form-control mb-3" rows="3" placeholder="Tulis doa/pesan/support-mu disini..."></textarea>
-                                    <button type="submit" class="btn btn-custom-inverse w-100">
-                                        AMAL
-                                        SEKARANG
-                                    </button>
+                                    <input type="text" autocomplete="off" class="form-control" step="1000" min="0" id="jumlahDonasi" placeholder="Masukan Jumlah Amal" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')">
+                                </div>
+                                <div class="slidecontainer">
+                                </div><br>
+                                <textarea name="comment" class="form-control mb-3" rows="3" placeholder="Tulis doa/pesan/support-mu disini..." id="pesan"></textarea>
+                                <button type="submit" class="btn btn-custom-inverse w-100" onclick="AmalSekarang()">
+                                    AMAL
+                                    SEKARANG
+                                </button>
 
-                                </fieldset>
-
-                            </form>
+                            </fieldset>
                         </div>
                         <h4 class="text-center">Terkumpul</h4>
                         <h4 class="text-center Terkumpul"></h4>
@@ -162,7 +161,7 @@ require_once "app.php";
                         </div>
                         <div class="d-flex">
                             <div class="p-2">dari <span class="Keseluruhan"></span> <br> <span class="Tanggat"></span> Hari lagi</div>
-                            <div class="ml-auto p-2">1%</div>
+                            <div class="ml-auto p-2"><span class="progresAmal"></span>%</div>
                         </div><br>
                         <div class="uploader d-flex justify-content-between">
                             <div class="p2 d-flex align-flex-center">
@@ -248,6 +247,7 @@ require_once "app.php";
     <script type="text/javascript" src="<?= BASE_URL ?>/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0"></script>
     <script src="<?= BASE_URL ?>/JS/FormatMoney.js"></script>
+    <script src="<?= BASE_URL ?>/JS/sweetalert2.all.min.js"></script>
     <script src="<?= BASE_URL ?>/js/amal.js"></script>
     <script src="<?= BASE_URL ?>/js/custom.js"></script>
     <script>

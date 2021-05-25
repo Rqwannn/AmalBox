@@ -9,10 +9,9 @@ function tambahDonatur($data)
     $namaDonatur = isset($data['nama_donatur']) ? $data['nama_donatur'] : null;
     $jmlAmal = $data['jml_amal'];
     $pesan = $data['pesan'];
-    $tglAmal = $data['tgl_amal'];
     $idAmal = $data['id_amal'];
 
-    $sql = "INSERT INTO tbl_donatur VALUE('','$namaDonatur','$jmlAmal','$pesan','$tglAmal','$idAmal', '0')";
+    $sql = "INSERT INTO tbl_donatur VALUE('','$namaDonatur','$jmlAmal','$pesan',null,'$idAmal', '0')";
 
     mysqli_query($db, $sql);
     $lastId = mysqli_insert_id($db);

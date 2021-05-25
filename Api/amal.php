@@ -4,7 +4,7 @@ require_once "../app.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // validation
-    if (!isset($_POST['jml_amal']) || !isset($_POST['pesan']) || !isset($_POST['tgl_amal']) || !isset($_POST['id_amal'])) {
+    if (!isset($_POST['jml_amal']) || !isset($_POST['pesan']) || !isset($_POST['id_amal']) || !isset($_POST['nama_donatur'])) {
         $data = [
             "status" => false,
             "message" => "invalid data"

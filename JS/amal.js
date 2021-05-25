@@ -21,6 +21,8 @@ $.ajax({
         const Tanggat = document.querySelector('.Tanggat');
         const alamatAmal = document.querySelector('.alamatAmal');
 
+        const progresAmal = document.querySelector('.progresAmal');
+
         const getTimeStart = new Date(result.data.tgl_mulai).getTime();
         const getTimeEnd = new Date(result.data.tgl_selesai).getTime();
 
@@ -43,6 +45,7 @@ $.ajax({
         Tanggat.innerHTML = hari;
         Terkumpul.innerHTML = Formater.toRupiah(result.data.terkumpul);
         alamatAmal.innerHTML = result.data.alamat;
+        progresAmal.innerHTML = getProgress;
 
         // Donatur
 
@@ -50,7 +53,7 @@ $.ajax({
             $('#nav-donatur').append(`<div class="d-flex path donatur">
             <div class="p-2"><img src="${BASE_URL}/img/icon.png"></div>
             <div class="p-2"> ${item.nama_donatur}
-                <br> <span>${item.tgl_amal}</span>
+                <p style="font-size: 12px;">${item.tgl_amal}</p>
             </div>
             <div class="ml-auto p-2">
                 <h5>${Formater.toRupiah(item.jml_amal)}</h5>
@@ -62,3 +65,43 @@ $.ajax({
         console.log(e);
     }
 })
+
+function AmalSekarang(){
+    const namaDonatur = document.getElementById('namaDonatur');
+    const jumlahDonasi = document.getElementById('jumlahDonasi');
+    const pesan = document.getElementById('pesan');
+
+    if(namaDonatur.value == "" || jumlahDonasi.value == "" || pesan.value == ""){
+        alert('Tidak Boleh Ada Field Yang Kosong');
+    } else {
+        $.ajax({
+            url : 'http://localhost/AmalBox/Api/amal.php',
+            type : 'POST',
+            dataType : 'JSON',
+            data : {
+                nama_donatur : namaDonatur.value,
+                jml_amal : jumlahDonasi.value,
+                pesan : pesan.value,
+                id_amal : searchParams.get('id')
+            },
+            success : (result) => {
+                console.log(result.data);
+                Swal.fire({
+                    title: 'Success',
+                    text: `${result.message}`,
+                    icon: 'success',
+                    confirmButtonColor: '#3085d6',
+                    confirmButtonText: 'Close'
+                  }).then((result) => {
+                    if (result.isConfirmed) {
+                        window.location.reload();
+                    }
+                  })
+            },
+            error : (e) => {
+                console.log(e);
+            }
+        })
+    }
+
+}
