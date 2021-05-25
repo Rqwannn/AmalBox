@@ -107,7 +107,6 @@ $(document).ready(function() {
       }, 500);
   });
 
-  const getAmal = document.querySelector('.getAmal');
   const BASE_URL = 'http://localhost/amalbox';
   const Formater = new FormatMoney();
 
@@ -120,6 +119,7 @@ $(document).ready(function() {
       result.data.forEach((item) => {
         const getTimeStart = new Date(item.tgl_mulai).getTime();
         const getTimeEnd = new Date(item.tgl_selesai).getTime();
+        const getAmal = document.querySelector('.getAmal');
 
         const selisih = getTimeEnd - getTimeStart;
         const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
@@ -128,6 +128,14 @@ $(document).ready(function() {
 
         if(parseInt(item.terkumpul) > parseInt(item.dana)){
           getProgress = '100';
+        }
+
+        let SetTerkumpul = '';
+
+        if(parseInt(item.terkumpul) != 0){
+          SetTerkumpul = Formater.toRupiah(item.terkumpul);
+        } else {
+          SetTerkumpul = 'Rp. 0';
         }
 
         $(getAmal).append(`<div class="item">
@@ -145,7 +153,7 @@ $(document).ready(function() {
                 <div class="card-info">
                     <span class="text-left">
                         Terkumpul <br>
-                        <b>${Formater.toRupiah(item.terkumpul)}</b>
+                        <b>${SetTerkumpul}</b>
                     </span>
                     <span class="text-right ml-auto">
                         <b>${getProgress}%</b> Progress <br>
@@ -184,27 +192,27 @@ $(document).ready(function() {
             </div>
         </div>
     </div>`);
-
-    $('.owl-carousel3').owlCarousel({
-      loop: true,
-      margin: 10,
-      nav: true,
-      autoplay: true,
-      autoplayTimeout: 5000,
-      autoplayHoverPause: false,
-      responsive: {
-          0: {
-              items: 1
-          },
-          600: {
-              items: 2
-          },
-          1000: {
-              items: 3
-          }
-      }
-  });
       })
+
+      $('.owl-carousel3').owlCarousel({
+        loop: true,
+        margin: 10,
+        nav: true,
+        autoplay: true,
+        autoplayTimeout: 5000,
+        autoplayHoverPause: false,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 2
+            },
+            1000: {
+                items: 3
+            }
+        }
+    });
     },
     error : function (e){
       console.log(e);
