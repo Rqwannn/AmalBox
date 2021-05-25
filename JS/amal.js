@@ -47,6 +47,22 @@ $.ajax({
         alamatAmal.innerHTML = result.data.alamat;
         progresAmal.innerHTML = getProgress;
 
+        const progressbar = document.querySelector('.progress-bar');
+        progressbar.setAttribute('aria-valuenow', getProgress);
+
+          //Progress bar
+          var delay = 500;
+          $(".progress-bar").each(function(i){
+              $(this).delay( delay*i ).animate( { width: $(this).attr('aria-valuenow') + '%' }, delay );
+          
+              $(this).prop('Counter',0).animate({
+                  Counter: $(this).text()
+              }, {
+                  duration: delay,
+                  easing: 'swing'
+              });
+          });
+
         // Donatur
 
         result.donatur.forEach((item) => {

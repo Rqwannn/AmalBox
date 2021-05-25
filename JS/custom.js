@@ -75,20 +75,6 @@ $(document).ready(function() {
   });
   
   
-  //Progress bar
-  var delay = 500;
-  $(".progress-bar").each(function(i){
-      $(this).delay( delay*i ).animate( { width: $(this).attr('aria-valuenow') + '%' }, delay );
-  
-      $(this).prop('Counter',0).animate({
-          Counter: $(this).text()
-      }, {
-          duration: delay,
-          easing: 'swing'
-      });
-  });
-  
-  
   setTimeout(function(){        
       $('.giftunggu').delay(0).fadeOut('slow'); 
   }, 1000);
@@ -122,7 +108,7 @@ $(document).ready(function() {
         const getAmal = document.querySelector('.getAmal');
 
         const selisih = getTimeEnd - getTimeStart;
-        const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
+        let hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
 
         let getProgress = Math.round((parseInt(item.terkumpul) * 100) / parseInt(item.dana));
 
@@ -136,6 +122,12 @@ $(document).ready(function() {
           SetTerkumpul = Formater.toRupiah(item.terkumpul);
         } else {
           SetTerkumpul = 'Rp. 0';
+        }
+
+        if(hari > 0){
+          hari = `${hari} Hari Lagi`;
+        } else {
+          hari = 'Selesai';
         }
 
         $(getAmal).append(`<div class="item">
@@ -157,7 +149,7 @@ $(document).ready(function() {
                     </span>
                     <span class="text-right ml-auto">
                         <b>${getProgress}%</b> Progress <br>
-                        <b>${hari}</b> Hari Lagi
+                        <b>${hari}</b>
                     </span>
                 </div>
                 <div class="card-body">
@@ -194,25 +186,40 @@ $(document).ready(function() {
     </div>`);
       })
 
-      $('.owl-carousel3').owlCarousel({
-        loop: true,
-        margin: 10,
-        nav: true,
-        autoplay: true,
-        autoplayTimeout: 5000,
-        autoplayHoverPause: false,
-        responsive: {
-            0: {
-                items: 1
-            },
-            600: {
-                items: 2
-            },
-            1000: {
-                items: 3
-            }
-        }
-    });
+      if($('.owl-carousel3') != null){
+        $('.owl-carousel3').owlCarousel({
+          loop: true,
+          margin: 10,
+          nav: true,
+          autoplay: true,
+          autoplayTimeout: 5000,
+          autoplayHoverPause: false,
+          responsive: {
+              0: {
+                  items: 1
+              },
+              600: {
+                  items: 2
+              },
+              1000: {
+                  items: 3
+              }
+          }
+      });
+
+          //Progress bar
+          var delay = 500;
+          $(".progress-bar").each(function(i){
+              $(this).delay( delay*i ).animate( { width: $(this).attr('aria-valuenow') + '%' }, delay );
+          
+              $(this).prop('Counter',0).animate({
+                  Counter: $(this).text()
+              }, {
+                  duration: delay,
+                  easing: 'swing'
+              });
+          });
+      }
     },
     error : function (e){
       console.log(e);
