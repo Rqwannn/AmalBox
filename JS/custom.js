@@ -106,3 +106,107 @@ $(document).ready(function() {
           scrollTop : 0                       // Scroll to top of body
       }, 500);
   });
+
+  const getAmal = document.querySelector('.getAmal');
+  const  BASE_URL = 'http://localhost/amalbox';
+  const Formater = new FormatMoney();
+
+  $.ajax({
+    url : 'http://localhost/AmalBox/Api/getAllAmal.php',
+    type : 'GET',
+    dataType : 'JSON',
+    success : function (result){
+
+      result.data.forEach((item) => {
+        const getTimeStart = new Date(item.tgl_mulai).getTime();
+        const getTimeEnd = new Date(item.tgl_selesai).getTime();
+
+        const selisih = getTimeEnd - getTimeStart;
+        const hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
+
+        let getProgress = Math.round((parseInt(item.terkumpul) * 100) / parseInt(item.dana));
+
+        if(parseInt(item.terkumpul) > parseInt(item.dana)){
+          getProgress = '100';
+        }
+
+        $(getAmal).append(`<div class="item">
+        <div class="">
+            <div class="card">
+                <a href="#" title="">
+                    <div class="card-image">
+                        <img class="img-fluid" src="${BASE_URL}/uploads/photos/${item.gambar}" alt="Card image cap">
+                    </div>
+                </a>
+                <span class="align-self-end tag"><a href="#">Pemberdayaan</a></span>
+                <div class="progress align-self-center">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="${getProgress}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="card-info">
+                    <span class="text-left">
+                        Terkumpul <br>
+                        <b>${Formater.toRupiah(item.terkumpul)}</b>
+                    </span>
+                    <span class="text-right ml-auto">
+                        <b>${getProgress}%</b> Progress <br>
+                        <b>${hari}</b> Hari Lagi
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title ">
+                        <a href="${BASE_URL}/amal.php">
+                            <h4 class="align-middle text-center">${item.judul}</h4>
+                        </a>
+                    </div>
+                    <p class="card-text">${item.judul}</p>
+                    <a href="${BASE_URL}/amal.php" class="btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
+                    <div class="uploader d-flex justify-content-between">
+                        <div class="p2 d-flex align-flex-center">
+                            <span class="">
+                                <img src="${BASE_URL}/img/icon.png" class="rounded-circle">
+                            </span>
+                            <span class="d-flex">
+                                <a href="#" class="align-flex-center align-self-center">AmalBox</a>
+                            </span>
+                        </div>
+                        <div class="line-card p2 d-flex align-self-center">
+                        </div>
+                        <div class="p2 d-flex">
+                            <span class="icon-map d-flex">
+                                <i class="fa fa-map-marker fa-2x align-self-center"></i>
+                            </span>
+                            <span class="lokasi d-flex">
+                                <a href="#" class="justify-content-right align-self-center">Jl. Apel 5, Sukamaju Baru, Kec. Tapos, Kota Depok, Jawa Barat 16455</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>`);
+
+    $('.owl-carousel3').owlCarousel({
+      loop: true,
+      margin: 10,
+      nav: true,
+      autoplay: true,
+      autoplayTimeout: 5000,
+      autoplayHoverPause: false,
+      responsive: {
+          0: {
+              items: 1
+          },
+          600: {
+              items: 2
+          },
+          1000: {
+              items: 3
+          }
+      }
+  });
+      })
+    },
+    error : function (e){
+      console.log(e);
+    }
+  })

@@ -10,7 +10,7 @@ require_once "app.php";
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    
+
     <link rel="icon" href="<?= BASE_URL ?>/img/icon.png">
     <link rel="stylesheet" href="<?= BASE_URL ?>/CSS/bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/CSS/font-awesome.min.css">
@@ -140,120 +140,7 @@ require_once "app.php";
             <h2 class="text-center mb-3">Program Amal</h2>
 
 
-            <div class="owl-carousel owl-carousel3 owl-theme">
-
-                <div class="item">
-                    <div class="">
-                        <div class="card">
-                            <a href="#" title="">
-                                <div class="card-image">
-                                    <img class="img-fluid" src="<?= BASE_URL; ?>/uploads/photos/5e255d30da4ab.jpg" alt="Card image cap">
-                                </div>
-                            </a>
-                            <span class="align-self-end tag"><a href="#">Pemberdayaan</a></span>
-                            <div class="progress align-self-center">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="card-info">
-                                <span class="text-left">
-                                    Terkumpul <br>
-                                    <b>Rp 0</b>
-                                </span>
-                                <span class="text-right ml-auto">
-                                    <b>0%</b> Progress <br>
-                                    <b>375</b> Hari Lagi
-                                </span>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-title ">
-                                    <a href="<?= BASE_URL; ?>/amal.php">
-                                        <h4 class="align-middle text-center">Rumah Tahfidz Sahabat Quran Ar Raheem </h4>
-                                    </a>
-                                </div>
-                                <p class="card-text">Sebuah organiasi non profit yang
-                                    bergerak di bidang pendidikan agama
-                                    Islam dengan tujuan utamanya menghafal minimal 1 juz dalam 2 tahun</p>
-                                <a href="<?= BASE_URL; ?>/amal.php" class="btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
-                                <div class="uploader d-flex justify-content-between">
-                                    <div class="p2 d-flex align-flex-center">
-                                        <span class="">
-                                            <img src="<?= BASE_URL; ?>/img/icon.png" class="rounded-circle">
-                                        </span>
-                                        <span class="d-flex">
-                                            <a href="#" class="align-flex-center align-self-center">AmalBox</a>
-                                        </span>
-                                    </div>
-                                    <div class="line-card p2 d-flex align-self-center">
-                                    </div>
-                                    <div class="p2 d-flex">
-                                        <span class="icon-map d-flex">
-                                            <i class="fa fa-map-marker fa-2x align-self-center"></i>
-                                        </span>
-                                        <span class="lokasi d-flex">
-                                            <a href="#" class="justify-content-right align-self-center">Jl. Apel 5, Sukamaju Baru, Kec. Tapos, Kota Depok, Jawa Barat 16455</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="item">
-                    <div class="">
-                        <div class="card">
-                            <a href="#" title="">
-                                <div class="card-image">
-                                    <img class="img-fluid" src="<?= BASE_URL; ?>/uploads/photos/5e8d4e19e23e5.png" alt="Card image cap">
-                                </div>
-                            </a>
-                            <span class="align-self-end tag"><a href="#">Pemberdayaan</a></span>
-                            <div class="progress align-self-center">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="card-info">
-                                <span class="text-left">
-                                    Terkumpul <br>
-                                    <b>Rp 3.000.000</b>
-                                </span>
-                                <span class="text-right ml-auto">
-                                    <b>1%</b> Progress <br>
-                                    <b>231</b> Hari Lagi
-                                </span>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-title ">
-                                    <a href="#">
-                                        <h4 class="align-middle text-center">Donatur Tetap subsidi UMKM CoVid19 </h4>
-                                    </a>
-                                </div>
-                                <p class="card-text">Donatur Tetap</p>
-                                <a href="<?= BASE_URL; ?>/amal.php" class="btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
-                                <div class="uploader d-flex justify-content-between">
-                                    <div class="p2 d-flex align-flex-center">
-                                        <span class="">
-                                            <img src="<?= BASE_URL; ?>/img/icon.png" class="rounded-circle">
-                                        </span>
-                                        <span class="d-flex">
-                                            <a href="#" class="align-flex-center align-self-center">AmalBox</a>
-                                        </span>
-                                    </div>
-                                    <div class="line-card p2 d-flex align-self-center">
-                                    </div>
-                                    <div class="p2 d-flex">
-                                        <span class="icon-map d-flex">
-                                            <i class="fa fa-map-marker fa-2x align-self-center"></i>
-                                        </span>
-                                        <span class="lokasi d-flex">
-                                            <a href="#" class="justify-content-right align-self-center">DKI Jakarta</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+            <div class="owl-carousel owl-carousel3 owl-theme getAmal">
 
             </div>
 
@@ -311,6 +198,7 @@ require_once "app.php";
     <script src="<?= BASE_URL ?>/JS/wow.min.js"></script>
     <script src="<?= BASE_URL ?>/JS/bootstrap.min.js"></script>
     <script src="<?= BASE_URL ?>/JS/owl.carousel.min.js"></script>
+    <script src="<?= BASE_URL ?>/JS/FormatMoney.js"></script>
     <script src="<?= BASE_URL ?>/JS/custom.js"></script>
     <script>
         $(window).scroll(function() {
@@ -339,27 +227,6 @@ require_once "app.php";
                 },
                 1000: {
                     items: 6
-                }
-            }
-        });
-    </script>
-    <script>
-        $('.owl-carousel3').owlCarousel({
-            loop: true,
-            margin: 10,
-            nav: true,
-            autoplay: true,
-            autoplayTimeout: 5000,
-            autoplayHoverPause: false,
-            responsive: {
-                0: {
-                    items: 1
-                },
-                600: {
-                    items: 2
-                },
-                1000: {
-                    items: 3
                 }
             }
         });
