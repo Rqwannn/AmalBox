@@ -16,7 +16,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         if ($amal) {
             $data = [
                 "status" => true,
-                "message" => "Success Submit Amal"
+                "message" => "Sukses Submit Amal"
             ];
         } else {
             $data = [
