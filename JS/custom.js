@@ -108,7 +108,7 @@ $(document).ready(function() {
   });
 
   const getAmal = document.querySelector('.getAmal');
-  const  BASE_URL = 'http://localhost/amalbox';
+  const BASE_URL = 'http://localhost/amalbox';
   const Formater = new FormatMoney();
 
   $.ajax({
@@ -159,7 +159,7 @@ $(document).ready(function() {
                         </a>
                     </div>
                     <p class="card-text">${item.judul}</p>
-                    <a href="${BASE_URL}/amal.php" class="btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
+                    <a href="${BASE_URL}/amal.php?id=${item.id_amal}" class="btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
                     <div class="uploader d-flex justify-content-between">
                         <div class="p2 d-flex align-flex-center">
                             <span class="">
@@ -176,7 +176,7 @@ $(document).ready(function() {
                                 <i class="fa fa-map-marker fa-2x align-self-center"></i>
                             </span>
                             <span class="lokasi d-flex">
-                                <a href="#" class="justify-content-right align-self-center">Jl. Apel 5, Sukamaju Baru, Kec. Tapos, Kota Depok, Jawa Barat 16455</a>
+                                <a href="#" class="justify-content-right align-self-center">${item.alamat}</a>
                             </span>
                         </div>
                     </div>
