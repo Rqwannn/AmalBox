@@ -12,7 +12,10 @@ function tambahDonatur($data)
     $tglAmal = $data['tgl_amal'];
     $idAmal = $data['id_amal'];
 
-    $sql = "INSERT INTO tbl_donatur VALUE('','$namaDonatur','$jmlAmal','$pesan','$tglAmal','$idAmal', '0')";
+    // generate token
+    $token = generateRandomString(20);
+
+    $sql = "INSERT INTO tbl_donatur VALUE('','$namaDonatur','$jmlAmal','$pesan','$tglAmal','$idAmal', '$token','0')";
 
     mysqli_query($db, $sql);
     $lastId = mysqli_insert_id($db);
@@ -150,4 +153,43 @@ function getDetailAmal($idAmal)
     }
 
     return $data;
+}
+
+function submitAmal($data)
+{
+    global $db;
+    $idDonatur = $data['id_donatur'];
+
+    $sql = "SELECT tbl_amal.id_amal,tbl_donatur.id_donatur,tbl_amal.terkumpul,tbl_donatur.jml_amal FROM tbl_donatur JOIN tbl_amal ON tbl_amal.id_amal = tbl_donatur.id_amal WHERE tbl_donatur.id_donatur = '$idDonatur'";
+
+    $query = mysqli_query($db, $sql);
+    if ($query) {
+        $result = mysqli_fetch_assoc($query);
+        $jmlAmal = $result['jml_amal'];
+        $terkumpul = intval($result['terkumpul']) + intval($jmlAmal);
+        $idAmal = $result['id_amal'];
+
+        $sqlUpdateAmal = "UPDATE tbl_amal SET terkumpul = '$terkumpul' WHERE id_amal = '$idAmal'";
+        if (mysqli_query($db, $sqlUpdateAmal)) {
+            $sqlUpdateDonatur = "UPDATE tbl_donatur SET `status` = '1' WHERE id_donatur = '$idDonatur'";
+            if (mysqli_query($db, $sqlUpdateDonatur)) {
+                return true;
+            } else {
+                return false;
+            }
+        } else {
+            return false;
+        }
+    }
+}
+
+function generateRandomString($length)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < $length; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
+    return $randomString;
 }
