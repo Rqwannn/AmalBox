@@ -107,3 +107,17 @@ function tambahAmal($data)
         return $data;
     }
 }
+
+function getAllAmal()
+{
+    global $db;
+    $sql = "SELECT * FROM tbl_amal";
+    $query = mysqli_query($db, $sql);
+    if ($query != null) {
+        $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+        return $data;        
+    } else {
+        return null;
+    }
+}
