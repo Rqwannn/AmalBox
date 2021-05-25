@@ -85,7 +85,6 @@ function AmalSekarang(){
                 id_amal : searchParams.get('id')
             },
             success : (result) => {
-                console.log(result.data);
                 Swal.fire({
                     title: 'Success',
                     text: `${result.message}`,

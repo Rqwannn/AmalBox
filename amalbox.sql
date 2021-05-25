@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Bulan Mei 2021 pada 14.05
+-- Waktu pembuatan: 25 Bulan Mei 2021 pada 15.31
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -20,6 +20,19 @@ SET time_zone = "+00:00";
 --
 -- Database: `amalbox`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Struktur dari tabel `tbl_admin`
+--
+
+CREATE TABLE `tbl_admin` (
+  `id_admin` int(11) NOT NULL,
+  `username` varchar(55) NOT NULL,
+  `email` varchar(55) NOT NULL,
+  `password` varchar(55) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
 
@@ -45,7 +58,7 @@ CREATE TABLE `tbl_amal` (
 --
 
 INSERT INTO `tbl_amal` (`id_amal`, `judul`, `detail`, `terkumpul`, `alamat`, `tgl_mulai`, `tgl_selesai`, `dana`, `gambar`, `gambar_lain`) VALUES
-(2, 'First Charity', 'contoh amal', '3000000', 'Jl. Apel 5, Sukamaju Baru, Kec. Tapos, Kota Depok, Jawa Barat 16455', '2021-05-25', '2022-05-25', '10000000', 'gambar-60aca71029638-092816.jpg', 'gambar-lain-60aca7102992c-092816.jpg'),
+(2, 'First Charity', 'contoh amal', '3100000', 'Jl. Apel 5, Sukamaju Baru, Kec. Tapos, Kota Depok, Jawa Barat 16455', '2021-05-25', '2022-05-25', '10000000', 'gambar-60aca71029638-092816.jpg', 'gambar-lain-60aca7102992c-092816.jpg'),
 (3, 'Second Charity', 'contoh amal 2', '0', 'Depok', '2021-07-25', '2022-07-25', '20000000', 'gambar-60ace6efc09f5-020047.jpg', 'gambar-lain-60ace6efc0dca-020047.jpg');
 
 -- --------------------------------------------------------
@@ -61,6 +74,7 @@ CREATE TABLE `tbl_donatur` (
   `pesan` text NOT NULL,
   `tgl_amal` datetime NOT NULL,
   `id_amal` int(11) NOT NULL,
+  `token` varchar(100) NOT NULL,
   `status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -68,12 +82,19 @@ CREATE TABLE `tbl_donatur` (
 -- Dumping data untuk tabel `tbl_donatur`
 --
 
-INSERT INTO `tbl_donatur` (`id_donatur`, `nama_donatur`, `jml_amal`, `pesan`, `tgl_amal`, `id_amal`, `status`) VALUES
-(3, 'Rizki Ramadhan', 100000, 'semoga sembuh', '2021-05-30 10:00:00', 2, 0);
+INSERT INTO `tbl_donatur` (`id_donatur`, `nama_donatur`, `jml_amal`, `pesan`, `tgl_amal`, `id_amal`, `token`, `status`) VALUES
+(3, 'Rizki Ramadhan', 100000, 'semoga sembuh', '2021-05-30 10:00:00', 2, 'bQ9Mf2g9EsOZVpK0YKOp', 1),
+(4, 'Ridwan', 100000, 'alhamdullilah', '2021-05-25 19:00:00', 3, 'bQ9Mf2g9EsOZVpK0YKwr', 0);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indeks untuk tabel `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  ADD PRIMARY KEY (`id_admin`);
 
 --
 -- Indeks untuk tabel `tbl_amal`
@@ -92,6 +113,12 @@ ALTER TABLE `tbl_donatur`
 --
 
 --
+-- AUTO_INCREMENT untuk tabel `tbl_admin`
+--
+ALTER TABLE `tbl_admin`
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT untuk tabel `tbl_amal`
 --
 ALTER TABLE `tbl_amal`
@@ -101,7 +128,7 @@ ALTER TABLE `tbl_amal`
 -- AUTO_INCREMENT untuk tabel `tbl_donatur`
 --
 ALTER TABLE `tbl_donatur`
-  MODIFY `id_donatur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `id_donatur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
