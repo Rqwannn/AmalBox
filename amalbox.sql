@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Bulan Mei 2021 pada 13.31
+-- Waktu pembuatan: 25 Bulan Mei 2021 pada 14.05
 -- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.1
+-- Versi PHP: 8.0.0
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,7 +32,7 @@ CREATE TABLE `tbl_amal` (
   `judul` varchar(55) NOT NULL,
   `detail` text NOT NULL,
   `terkumpul` varchar(50) NOT NULL,
-  `alamat` varchar(255) NOT NULL,
+  `alamat` text NOT NULL,
   `tgl_mulai` date NOT NULL,
   `tgl_selesai` date NOT NULL,
   `dana` varchar(50) NOT NULL,
@@ -45,7 +45,8 @@ CREATE TABLE `tbl_amal` (
 --
 
 INSERT INTO `tbl_amal` (`id_amal`, `judul`, `detail`, `terkumpul`, `alamat`, `tgl_mulai`, `tgl_selesai`, `dana`, `gambar`, `gambar_lain`) VALUES
-(2, 'First Charity', 'contoh amal', '3000000', 'Jl. Apel 5, Sukamaju Baru, Kec. Tapos, Kota Depok, Jawa Barat 16455', '2021-05-25', '2022-05-25', '10000000', 'gambar-60aca71029638-092816.jpg', 'gambar-lain-60aca7102992c-092816.jpg');
+(2, 'First Charity', 'contoh amal', '3000000', 'Jl. Apel 5, Sukamaju Baru, Kec. Tapos, Kota Depok, Jawa Barat 16455', '2021-05-25', '2022-05-25', '10000000', 'gambar-60aca71029638-092816.jpg', 'gambar-lain-60aca7102992c-092816.jpg'),
+(3, 'Second Charity', 'contoh amal 2', '0', 'Depok', '2021-07-25', '2022-07-25', '20000000', 'gambar-60ace6efc09f5-020047.jpg', 'gambar-lain-60ace6efc0dca-020047.jpg');
 
 -- --------------------------------------------------------
 
@@ -94,7 +95,7 @@ ALTER TABLE `tbl_donatur`
 -- AUTO_INCREMENT untuk tabel `tbl_amal`
 --
 ALTER TABLE `tbl_amal`
-  MODIFY `id_amal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_amal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_donatur`
