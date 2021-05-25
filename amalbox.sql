@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 25 Bulan Mei 2021 pada 15.31
+-- Waktu pembuatan: 25 Bulan Mei 2021 pada 16.21
 -- Versi server: 10.4.17-MariaDB
--- Versi PHP: 8.0.0
+-- Versi PHP: 8.0.1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -59,7 +59,7 @@ CREATE TABLE `tbl_amal` (
 
 INSERT INTO `tbl_amal` (`id_amal`, `judul`, `detail`, `terkumpul`, `alamat`, `tgl_mulai`, `tgl_selesai`, `dana`, `gambar`, `gambar_lain`) VALUES
 (2, 'First Charity', 'contoh amal', '3100000', 'Jl. Apel 5, Sukamaju Baru, Kec. Tapos, Kota Depok, Jawa Barat 16455', '2021-05-25', '2022-05-25', '10000000', 'gambar-60aca71029638-092816.jpg', 'gambar-lain-60aca7102992c-092816.jpg'),
-(3, 'Second Charity', 'contoh amal 2', '0', 'Depok', '2021-07-25', '2022-07-25', '20000000', 'gambar-60ace6efc09f5-020047.jpg', 'gambar-lain-60ace6efc0dca-020047.jpg');
+(3, 'Second Charity', 'contoh amal 2', '0', 'Depok', '2021-05-25', '2022-07-25', '20000000', 'gambar-60ace6efc09f5-020047.jpg', 'gambar-lain-60ace6efc0dca-020047.jpg');
 
 -- --------------------------------------------------------
 
@@ -72,7 +72,7 @@ CREATE TABLE `tbl_donatur` (
   `nama_donatur` varchar(255) DEFAULT NULL,
   `jml_amal` int(11) NOT NULL,
   `pesan` text NOT NULL,
-  `tgl_amal` datetime NOT NULL,
+  `tgl_amal` timestamp NOT NULL DEFAULT current_timestamp(),
   `id_amal` int(11) NOT NULL,
   `token` varchar(100) NOT NULL,
   `status` int(11) NOT NULL
@@ -83,8 +83,9 @@ CREATE TABLE `tbl_donatur` (
 --
 
 INSERT INTO `tbl_donatur` (`id_donatur`, `nama_donatur`, `jml_amal`, `pesan`, `tgl_amal`, `id_amal`, `token`, `status`) VALUES
-(3, 'Rizki Ramadhan', 100000, 'semoga sembuh', '2021-05-30 10:00:00', 2, 'bQ9Mf2g9EsOZVpK0YKOp', 1),
-(4, 'Ridwan', 100000, 'alhamdullilah', '2021-05-25 19:00:00', 3, 'bQ9Mf2g9EsOZVpK0YKwr', 0);
+(3, 'Rizki Ramadhan', 100000, 'semoga sembuh', '2021-05-30 03:00:00', 2, 'bQ9Mf2g9EsOZVpK0YKOp', 1),
+(4, 'Ridwan', 100000, 'alhamdullilah', '2021-05-25 12:00:00', 2, 'bQ9Mf2g9EsOZVpK0YKwr', 0),
+(5, 'Muhammad Raqwan', 250000, 'Bismillah', '2021-05-25 14:20:12', 2, 'ivZOZNDxgbFvzFhxY4k5', 0);
 
 --
 -- Indexes for dumped tables
@@ -128,7 +129,7 @@ ALTER TABLE `tbl_amal`
 -- AUTO_INCREMENT untuk tabel `tbl_donatur`
 --
 ALTER TABLE `tbl_donatur`
-  MODIFY `id_donatur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_donatur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
