@@ -46,6 +46,8 @@ function tambahAmal($data)
     $tgl_selesai = $data['tgl_selesai'];
     $img = $_FILES['img'];
     $img_lain = $_FILES['img_lain'];
+    $dana = $data["dana"];
+    $alamat = $data["alamat"];
 
     $errorImg = '';
     $errorImgLain = '';
@@ -91,7 +93,7 @@ function tambahAmal($data)
         move_uploaded_file($imgLainTmp, $moveLocation . "/" . $imgLainName);
 
         // insert data
-        $sql = "INSERT INTO tbl_amal VALUE('','$judul','$detail','$tgl_mulai','$tgl_selesai','0','$imgName','$imgLainName')";
+        $sql = "INSERT INTO tbl_amal VALUE('','$judul','$detail','0','$alamat','$tgl_mulai','$tgl_selesai','$dana','$imgName','$imgLainName')";
 
         mysqli_query($db, $sql);
         $lastId = mysqli_insert_id($db);

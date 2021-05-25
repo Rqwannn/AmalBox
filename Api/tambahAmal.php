@@ -4,7 +4,7 @@ require_once "../app.php";
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     // validation
-    if (!isset($_POST['judul']) || !isset($_POST['detail']) || !isset($_POST['tgl_mulai']) || !isset($_POST['tgl_selesai']) || $_FILES['img']['size'] == 0 || $_FILES['img_lain']['size'] == 0) {
+    if (!isset($_POST['judul']) || !isset($_POST['dana']) || !isset($_POST['alamat']) || !isset($_POST['detail']) || !isset($_POST['tgl_mulai']) || !isset($_POST['tgl_selesai']) || $_FILES['img']['size'] == 0 || $_FILES['img_lain']['size'] == 0) {
         $data = [
             "status" => false,
             "message" => "invalid data"
