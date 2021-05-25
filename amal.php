@@ -17,6 +17,7 @@ require_once "app.php";
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/css/dataTables.bootstrap4.min.css">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/CSS/WOW-master/css/libs/animate.css">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/css/style.css">
+    <meta name="id_amal" content="<?php echo $id ?>">
     <script src="https://kit.fontawesome.com/d1a508a7c1.js" crossorigin="anonymous"></script>
 
 </head>
@@ -77,10 +78,10 @@ require_once "app.php";
                         </ol>
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img class="d-block w-100" src="<?= BASE_URL; ?>/uploads/photos/5e8d4e19e23e5.png" alt="First slide">
+                                <img class="d-block w-100 GambarSatu" src="<?= BASE_URL; ?>/uploads/photos/5e8d4e19e23e5.png" alt="First slide">
                             </div>
                             <div class="carousel-item ">
-                                <img class="d-block w-100" src="<?= BASE_URL; ?>/uploads/photos/5e8d4e19e23e5.png" alt="First slide">
+                                <img class="d-block w-100 GambarDua" src="<?= BASE_URL; ?>/uploads/photos/5e8d4e19e23e5.png" alt="First slide">
                             </div>
 
                         </div>
@@ -105,8 +106,8 @@ require_once "app.php";
                         <div class="tab-content" id="nav-tabContent">
 
                             <div class="tab-pane fade show active" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
-                                <h2 class="text-center">Donatur Tetap subsidi UMKM CoVid19</h2>
-                                <p>Donatur Tetap</p>
+                                <h2 class="text-center TitleAmal"></h2>
+                                <p class="ContentAmal">Donatur Tetap</p>
 
                                 <p>Download Form Pengisian Donatur di :&nbsp;<br />
                                     <a href="https://bit.ly/amalbox-donatur">bit.ly/amalbox-donatur</a><br />
@@ -116,44 +117,8 @@ require_once "app.php";
 
                             <div class="tab-pane fade" id="nav-donatur" role="tabpanel" aria-labelledby="nav-donatur-tab">
 
-
-
-                                <div class="d-flex path donatur">
-                                    <div class="p-2"><img src="<?= BASE_URL; ?>/img/icon.png"></div>
-                                    <div class="p-2"> DRG
-                                        <br> <span>2020-04-20 14:57:56</span>
-                                    </div>
-                                    <div class="ml-auto p-2">
-                                        <h5>Rp. 1.000.000</h5>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="d-flex path donatur">
-                                    <div class="p-2"><img src="<?= BASE_URL; ?>/img/icon.png"></div>
-                                    <div class="p-2"> Sigit Sunarno
-                                        <br> <span>2020-04-20 15:20:03</span>
-                                    </div>
-                                    <div class="ml-auto p-2">
-                                        <h5>Rp. 1.000.000</h5>
-                                    </div>
-                                </div>
-
-
-
-                                <div class="d-flex path donatur">
-                                    <div class="p-2"><img src="<?= BASE_URL; ?>/img/icon.png"></div>
-                                    <div class="p-2"> Sigit Sunarno
-                                        <br> <span>2020-04-20 15:24:05</span>
-                                    </div>
-                                    <div class="ml-auto p-2">
-                                        <h5>Rp. 1.000.000</h5>
-                                    </div>
-                                </div>
-
                             </div>
-                            
+
                         </div>
                     </div>
 
@@ -161,7 +126,7 @@ require_once "app.php";
 
                 <div class="col-lg-4 custom-sidebar abs-bawah">
                     <div class="sidebar">
-                        <h4 class="text-center">Donatur Tetap subsidi UMKM CoVid19</h4>
+                        <h4 class="text-center TitleAmal"></h4>
                         <br>
                         <center>
                             <span class="tag"><a href="#">Pemberdayaan</a></span>
@@ -190,13 +155,13 @@ require_once "app.php";
                             </form>
                         </div>
                         <h4 class="text-center">Terkumpul</h4>
-                        <h4 class="text-center"> Rp. 3.000.000 </h4>
+                        <h4 class="text-center Terkumpul"></h4>
                         <br>
                         <div class="progress w-100">
                             <div class="progress-bar" role="progressbar" aria-valuenow="1" aria-valuemin="0" aria-valuemax="100" style="width: 25%;"></div>
                         </div>
                         <div class="d-flex">
-                            <div class="p-2">dari Rp. 450.000.000 <br> 231 Hari lagi</div>
+                            <div class="p-2">dari <span class="Keseluruhan"></span> <br> <span class="Tanggat"></span> Hari lagi</div>
                             <div class="ml-auto p-2">1%</div>
                         </div><br>
                         <div class="uploader d-flex justify-content-between">
@@ -215,7 +180,7 @@ require_once "app.php";
                                     <i class="fa fa-map-marker fa-2x align-self-center"></i>
                                 </span>
                                 <span class="lokasi d-flex">
-                                    <a href="#" class="justify-content-right align-self-center">DKI Jakarta</a>
+                                    <a href="#" class="justify-content-right alamatAmal align-self-center"></a>
                                 </span>
                             </div>
                         </div>
@@ -282,6 +247,8 @@ require_once "app.php";
     <script type="text/javascript" src="<?= BASE_URL ?>/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src="<?= BASE_URL ?>/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0"></script>
+    <script src="<?= BASE_URL ?>/JS/FormatMoney.js"></script>
+    <script src="<?= BASE_URL ?>/js/amal.js"></script>
     <script src="<?= BASE_URL ?>/js/custom.js"></script>
     <script>
         $(window).scroll(function() {
