@@ -116,8 +116,36 @@ function getAllAmal()
     if ($query != null) {
         $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
 
-        return $data;        
+        return $data;
     } else {
         return null;
     }
+}
+
+function getDetailAmal($idAmal)
+{
+    global $db;
+    $sql = "SELECT * FROM tbl_amal WHERE id_amal = '$idAmal'";
+    $query = mysqli_query($db, $sql);
+    $dataAmal = mysqli_fetch_assoc($query);
+
+    if ($dataAmal != null) {
+        $sql2 = "SELECT * FROM tbl_donatur WHERE id_amal = '$idAmal'";
+        $query2 = mysqli_query($db, $sql2);
+        $dataDonatur = mysqli_fetch_all($query2, MYSQLI_ASSOC);
+
+        $data = [
+            "success" => true,
+            "message" => "Data Found",
+            "data" => $dataAmal,
+            "donatur" => $dataDonatur
+        ];
+    } else {
+        $data = [
+            "success" => false,
+            "message" => "Data Not Found",
+        ];
+    }
+
+    return $data;
 }
