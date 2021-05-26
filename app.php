@@ -135,7 +135,7 @@ function getDetailAmal($idAmal)
     $dataAmal = mysqli_fetch_assoc($query);
 
     if ($dataAmal != null) {
-        $sql2 = "SELECT * FROM tbl_donatur WHERE id_amal = '$idAmal'";
+        $sql2 = "SELECT * FROM tbl_donatur WHERE id_amal = '$idAmal' AND `status` = '1'";
         $query2 = mysqli_query($db, $sql2);
         $dataDonatur = mysqli_fetch_all($query2, MYSQLI_ASSOC);
 
