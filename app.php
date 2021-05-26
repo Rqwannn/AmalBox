@@ -290,6 +290,31 @@ function submitAmal($data)
     }
 }
 
+function hapusAmal($data)
+{
+    global $db;
+    $idAmal = $data['id_amal'];
+
+    $result = getAmal($idAmal);
+    if ($result) {
+        $oldImg = $result['gambar'];
+        $oldImgLain = $result['gambar_lain'];
+        // unlink old image
+        $moveLocation = "../uploads/photos";
+        unlink($moveLocation . "/" . $oldImg);
+        unlink($moveLocation . "/" . $oldImgLain);
+        $sql = "DELETE FROM tbl_amal WHERE id_amal = '$idAmal'";
+        mysqli_query($db, $sql);
+        if (mysqli_affected_rows($db) > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    } else {
+        return false;
+    }
+}
+
 function generateRandomString($length)
 {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
