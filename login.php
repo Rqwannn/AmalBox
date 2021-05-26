@@ -14,7 +14,7 @@ require_once "app.php";
     <link rel="stylesheet" href="<?= BASE_URL; ?>/css/login.css" />
 
 
-    <title>Login #9</title>
+    <title>Login | Ridwan Amal</title>
 </head>
 
 <body>

@@ -133,7 +133,7 @@ $(document).ready(function() {
         $(getAmal).append(`<div class="item">
         <div class="">
             <div class="card">
-                <a href="#" title="">
+                <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
                     <div class="card-image">
                         <img class="img-fluid" src="${BASE_URL}/uploads/photos/${item.gambar}" alt="Card image cap">
                     </div>
@@ -154,7 +154,7 @@ $(document).ready(function() {
                 </div>
                 <div class="card-body">
                     <div class="card-title ">
-                        <a href="${BASE_URL}/amal.php">
+                        <a href="${BASE_URL}/amal.php?id=${item.id_amal}">
                             <h4 class="align-middle text-center">${item.judul}</h4>
                         </a>
                     </div>

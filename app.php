@@ -96,7 +96,7 @@ function tambahAmal($data)
         move_uploaded_file($imgLainTmp, $moveLocation . "/" . $imgLainName);
 
         // insert data
-        $sql = "INSERT INTO tbl_amal VALUE('','$judul','$detail','0','$alamat','$tgl_mulai','$tgl_selesai','$dana','$imgName','$imgLainName')";
+        $sql = "INSERT INTO tbl_amal VALUE('','$judul','$detail','0','$alamat','$tgl_mulai','$tgl_selesai','$dana','$imgName','$imgLainName','0')";
 
         mysqli_query($db, $sql);
         $lastId = mysqli_insert_id($db);
@@ -113,10 +113,107 @@ function tambahAmal($data)
     }
 }
 
+function editAmal($data)
+{
+    global $db;
+    $idAmal = $data['id_amal'];
+    $judul = $data['judul'];
+    $detail = $data['detail'];
+    $tgl_mulai = $data['tgl_mulai'];
+    $tgl_selesai = $data['tgl_selesai'];
+    $img_old = $data['old_img'];
+    $img_lain_old = $data['old_img_lain'];
+    $dana = $data["dana"];
+    $alamat = $data["alamat"];
+    $status = $data['selesai'];
+
+    $success = true;
+    $errorImg = '';
+    $errorImgLain = '';
+
+    // check if upload new img
+    if ($_FILES['img']['size'] != 0) {
+        $img = $_FILES['img'];
+        // cek ekstensi
+        if ($img['type'] != "image/jpeg" && $img['type'] != "image/jpg" && $img['type'] != "image/png") {
+            $errorImg = "gambar harus berformat jpg,jpeg atau png";
+            $success = false;
+        }
+    }
+    // check if upload new img other
+    if ($_FILES['img_lain']['size'] != 0) {
+        $img_lain = $_FILES['img_lain'];
+        // cek ekstensi
+        if ($img_lain['type'] != "image/jpeg" && $img_lain['type'] != "image/jpg" && $img_lain['type'] != "image/png") {
+            $errorImgLain = "gambar lain harus berformat jpg,jpeg atau png";
+            $success = false;
+        }
+    }
+
+    $errors = [];
+    if ($errorImg != "") {
+        $errors["img"] = $errorImg;
+    }
+    if ($errorImgLain != "") {
+        $errors["img_lain"] = $errorImgLain;
+    }
+
+    $data = [
+        "success" => $success,
+        "errors" => $errors
+    ];
+
+    if ($success) {
+        $moveLocation = "../uploads/photos";
+        // check if upload new img
+        if ($_FILES['img']['size'] != 0) {
+            // move img
+            $imgTmp = $img['tmp_name'];
+            $imgExtensionArr = explode(".", $img['name']);
+            $imgExtension = $imgExtensionArr[count($imgExtensionArr) - 1];
+            $imgName = "gambar-" . uniqid() . "-" . date("his") . "." . $imgExtension;
+            move_uploaded_file($imgTmp, $moveLocation . "/" . $imgName);
+            // unlink old img
+            unlink($moveLocation . "/" . $img_old);
+        } else {
+            $imgName = $img_old;
+        }
+
+        // check if upload new img other
+        if ($_FILES['img_lain']['size'] != 0) {
+            // move img lain
+            $imgLainTmp = $img_lain['tmp_name'];
+            $imgLainExtensionArr = explode(".", $img_lain['name']);
+            $imgLainExtension = $imgExtensionArr[count($imgLainExtensionArr) - 1];
+            $imgLainName = "gambar-lain-" . uniqid() . "-" . date("his") . "." . $imgLainExtension;
+            move_uploaded_file($imgLainTmp, $moveLocation . "/" . $imgLainName);
+            // unlink img other
+            unlink($moveLocation . "/" . $img_lain_old);
+        } else {
+            $imgLainName = $img_lain_old;
+        }
+
+        // insert data
+        $sql = "UPDATE tbl_amal SET judul = '$judul', detail = '$detail',alamat = '$alamat',tgl_mulai = '$tgl_mulai',tgl_selesai = '$tgl_selesai',dana = '$dana',gambar = '$imgName',gambar_lain = '$imgLainName', `status` = '$status' WHERE id_amal = '$idAmal'";
+
+        mysqli_query($db, $sql);
+        $data = getAmal($idAmal);
+
+        $data = [
+            "success" => true,
+            "data" => $data
+        ];
+
+        return $data;
+    } else {
+        return $data;
+    }
+}
+
 function getAllAmal()
 {
     global $db;
-    $sql = "SELECT * FROM tbl_amal";
+    $sql = "SELECT * FROM tbl_amal WHERE `status` = '0'";
     $query = mysqli_query($db, $sql);
     if ($query != null) {
         $data = mysqli_fetch_all($query, MYSQLI_ASSOC);
@@ -160,7 +257,7 @@ function submitAmal($data)
     global $db;
     $idDonatur = $data['id_donatur'];
 
-    $sql = "SELECT tbl_amal.id_amal,tbl_donatur.id_donatur,tbl_amal.terkumpul,tbl_donatur.jml_amal FROM tbl_donatur JOIN tbl_amal ON tbl_amal.id_amal = tbl_donatur.id_amal WHERE tbl_donatur.id_donatur = '$idDonatur'";
+    $sql = "SELECT tbl_amal.id_amal,tbl_donatur.id_donatur,tbl_amal.dana as dana_akhir,tbl_amal.terkumpul,tbl_donatur.jml_amal FROM tbl_donatur JOIN tbl_amal ON tbl_amal.id_amal = tbl_donatur.id_amal WHERE tbl_donatur.id_donatur = '$idDonatur'";
 
     $query = mysqli_query($db, $sql);
     if ($query) {
@@ -168,8 +265,16 @@ function submitAmal($data)
         $jmlAmal = $result['jml_amal'];
         $terkumpul = intval($result['terkumpul']) + intval($jmlAmal);
         $idAmal = $result['id_amal'];
+        $danaAkhir = intval($result['dana_akhir']);
 
-        $sqlUpdateAmal = "UPDATE tbl_amal SET terkumpul = '$terkumpul' WHERE id_amal = '$idAmal'";
+        // change amal status if dana = terkumpul
+        $sqlUpdateAmal = "";
+        if ($danaAkhir == $terkumpul || $danaAkhir < $terkumpul) {
+            $sqlUpdateAmal = "UPDATE tbl_amal SET terkumpul = '$terkumpul', `status` = '1' WHERE id_amal = '$idAmal'";
+        } else {
+            $sqlUpdateAmal = "UPDATE tbl_amal SET terkumpul = '$terkumpul' WHERE id_amal = '$idAmal'";
+        }
+
         if (mysqli_query($db, $sqlUpdateAmal)) {
             $sqlUpdateDonatur = "UPDATE tbl_donatur SET `status` = '1' WHERE id_donatur = '$idDonatur'";
             if (mysqli_query($db, $sqlUpdateDonatur)) {
@@ -180,6 +285,8 @@ function submitAmal($data)
         } else {
             return false;
         }
+    } else {
+        return false;
     }
 }
 
