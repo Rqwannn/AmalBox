@@ -325,3 +325,81 @@ function generateRandomString($length)
     }
     return $randomString;
 }
+
+function tambahAdmin($data)
+{
+    global $db;
+    $email = $data['email'];
+    $username = $data['username'];
+    $password = $data['password'];
+
+    $success = true;
+    $errEmail = "";
+    $errUsername = "";
+    $checkEmail = check("tbl_admin", "email", $email);
+    $checkUsername = check("tbl_admin", "username", $username);
+
+    $errors = [];
+
+    if (!$checkEmail) {
+        $success = false;
+        $errEmail = "Email sudah terdaftar";
+    }
+
+    if (!$checkUsername) {
+        $success = false;
+        $errUsername = "Username sudah terdaftar";
+    }
+
+    if ($errEmail != "") $errors["email"] = $errEmail;
+    if ($errUsername != "") $errors["username"] = $errUsername;
+
+    if (!$success) {
+        return [
+            "status" => false,
+            "message" => "Invalid Data",
+            "errors" => $errors
+        ];
+    }
+
+    $sql = "INSERT INTO tbl_admin VALUE('','$username','$email','$password')";
+    $query = mysqli_query($db, $sql);
+
+    if (!$query) {
+        return [
+            "status" => false,
+            "message" => "Failed Add Admin"
+        ];
+    }
+
+    $lastId = mysqli_insert_id($db);
+    $dataAdmin = getAdmin($lastId);
+
+    return [
+        "status" => true,
+        "message" => "Success Add Admin",
+        "data" => $dataAdmin
+    ];
+}
+
+function check($tbl, $x, $y)
+{
+    global $db;
+    $sql = "SELECT * FROM $tbl WHERE $x = '$y'";
+    $query = mysqli_query($db, $sql);
+
+    if (mysqli_fetch_assoc($query) != null) {
+        return false;
+    } else {
+        return true;
+    }
+}
+
+function getAdmin($id)
+{
+    global $db;
+    $sql = "SELECT * FROM tbl_admin WHERE id_admin = '$id'";
+    $query = mysqli_query($db, $sql);
+
+    return mysqli_fetch_assoc($query);
+}
