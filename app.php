@@ -403,3 +403,27 @@ function getAdmin($id)
 
     return mysqli_fetch_assoc($query);
 }
+
+function cariAmal($data) {
+    global $db;
+    $key = $data['key'];
+
+    $sql = "SELECT * FROM tbl_amal WHERE judul LIKE '%$key%'";
+    $query = mysqli_query($db, $sql);
+    $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+    if ($result != null) {
+        $data = [
+            "status" => true,
+            "message" => "Data Found",
+            "data" => $result
+        ];
+    } else {
+        $data = [
+            "status" => false,
+            "message" => "Data Not Found"
+        ];
+    }
+    
+    return $data;
+}
