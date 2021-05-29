@@ -96,44 +96,244 @@ $(document).ready(function() {
   const BASE_URL = 'http://localhost/amalbox';
   const Formater = new FormatMoney();
 
-  $.ajax({
-    url : 'http://localhost/AmalBox/Api/getAllAmal.php',
-    type : 'GET',
-    dataType : 'JSON',
-    success : function (result){
-
-      result.data.forEach((item) => {
-        const getTimeStart = new Date().getTime();
-        const getTimeEnd = new Date(item.tgl_selesai).getTime();
-        const getAmal = document.querySelector('.getAmal');
-        const getAmal2 = document.querySelector('.getAmal2');
-
-        const selisih = getTimeEnd - getTimeStart;
-        let hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
-
-        let getProgress = Math.round((parseInt(item.terkumpul) * 100) / parseInt(item.dana));
-
-        if(parseInt(item.terkumpul) > parseInt(item.dana)){
-          getProgress = '100';
+  function getDataAmal(){
+    $.ajax({
+      url : 'http://localhost/AmalBox/Api/getAllAmal.php',
+      type : 'GET',
+      dataType : 'JSON',
+      success : function (result){
+  
+        result.data.forEach((item) => {
+          const getTimeStart = new Date().getTime();
+          const getTimeEnd = new Date(item.tgl_selesai).getTime();
+          const getAmal = document.querySelector('.getAmal');
+          const getAmal2 = document.querySelector('.getAmal2');
+  
+          const selisih = getTimeEnd - getTimeStart;
+          let hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
+  
+          let getProgress = Math.round((parseInt(item.terkumpul) * 100) / parseInt(item.dana));
+  
+          if(parseInt(item.terkumpul) > parseInt(item.dana)){
+            getProgress = '100';
+          }
+  
+          let SetTerkumpul = '';
+  
+          if(parseInt(item.terkumpul) != 0){
+            SetTerkumpul = Formater.toRupiah(item.terkumpul);
+          } else {
+            SetTerkumpul = 'Rp. 0';
+          }
+  
+          if(hari > 0){
+            hari = `${hari} Hari Lagi`;
+          } else {
+            hari = 'Selesai';
+          }
+  
+          if(getAmal != null){
+            $(getAmal).append(`<div class="item">
+            <div class="">
+                <div class="card">
+                    <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
+                        <div class="card-image">
+                            <img class="img-fluid" src="${BASE_URL}/uploads/photos/${item.gambar}" alt="Card image cap">
+                        </div>
+                    </a>
+                    <span class="align-self-end tag"><a href="${BASE_URL}/amal.php?id=${item.id_amal}">Pemberdayaan</a></span>
+                    <div class="progress align-self-center">
+                        <div class="progress-bar" role="progressbar" aria-valuenow="${getProgress}" aria-valuemin="0" aria-valuemax="100"></div>
+                    </div>
+                    <div class="card-info">
+                        <span class="text-left">
+                            Terkumpul <br>
+                            <b>${SetTerkumpul}</b>
+                        </span>
+                        <span class="text-right ml-auto">
+                            <b>${getProgress}%</b> Progress <br>
+                            <b>${hari}</b>
+                        </span>
+                    </div>
+                    <div class="card-body">
+                        <div class="card-title ">
+                            <a href="${BASE_URL}/amal.php?id=${item.id_amal}">
+                                <h4 class="align-middle text-center">${item.judul}</h4>
+                            </a>
+                        </div>
+                        <p class="card-text">${item.detail}</p>
+                        <a href="${BASE_URL}/amal.php?id=${item.id_amal}" class="btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
+                        <div class="uploader d-flex justify-content-between">
+                            <div class="p2 d-flex align-flex-center">
+                                <span class="">
+                                    <img src="${BASE_URL}/img/icon.png" class="rounded-circle">
+                                </span>
+                                <span class="d-flex">
+                                    <a href="#" class="align-flex-center align-self-center">RidwanAmal</a>
+                                </span>
+                            </div>
+                            <div class="line-card p2 d-flex align-self-center">
+                            </div>
+                            <div class="p2 d-flex">
+                                <span class="icon-map d-flex">
+                                    <i class="fa fa-map-marker fa-2x align-self-center"></i>
+                                </span>
+                                <span class="lokasi d-flex">
+                                    <a href="#" class="justify-content-right align-self-center">${item.alamat}</a>
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`);
+          } else {
+            $(getAmal2).append(`<div class="col-lg-4">
+            <div class="card">
+                <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
+                    <div class="card-image">
+                        <img class="img-fluid" src="${BASE_URL}/uploads/photos/${item.gambar}" alt="Card image cap">
+                    </div>
+                </a>
+                <span class="align-self-end tag"><a href="${BASE_URL}/amal.php?id=${item.id_amal}">Pemberdayaan</a></span>
+                <div class="progress align-self-center">
+                    <div class="progress-bar" role="progressbar" aria-valuenow="${getProgress}" aria-valuemin="0" aria-valuemax="100"></div>
+                </div>
+                <div class="card-info">
+                    <span class="text-left">
+                        Terkumpul <br>
+                        <b>${SetTerkumpul}</b>
+                    </span>
+                    <span class="text-right ml-auto">
+                        <b>${getProgress}%</b> Progress <br>
+                        <b>${hari}</b> Hari Lagi
+                    </span>
+                </div>
+                <div class="card-body">
+                    <div class="card-title mb-3">
+                        <a href="${BASE_URL}/amal.php?id=${item.id_amal}">
+                            <h4 class="align-middle text-center">${item.judul}</h4>
+                        </a>
+                    </div>
+                    <p class="card-text">${item.detail}</p>
+                    <a href="${BASE_URL}/amal.php?id=${item.id_amal}" class="mt-3 btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
+                    <div class="uploader d-flex justify-content-between">
+                        <div class="p2 d-flex align-flex-center">
+                            <span class="d-flex">
+                                <img src="${BASE_URL}/img/icon.png" class="rounded-circle align-flex-center align-self-center" style="width: 30px;height: 30px">
+                            </span>
+                            <span class="d-flex">
+                                <a href="#" class="align-flex-center align-self-center">RidwanAmal</a>
+                            </span>
+                        </div>
+                        <div class="line-card p2 d-flex align-self-center">
+                        </div>
+                        <div class="p2 d-flex" style="overflow: hidden;">
+                            <span class="icon-map d-flex">
+                                <i class="fa fa-map-marker fa-2x align-self-center" style="font-size: 20px;"></i>
+                            </span>
+                            <span class="lokasi">
+                                <a href="#" class="justify-content-right align-flex-center align-self-center">${item.alamat}</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>`);
+          }
+  
+        })
+  
+        //Progress bar
+        var delay = 500;
+        $(".progress-bar").each(function(i){
+            $(this).delay( delay*i ).animate( { width: $(this).attr('aria-valuenow') + '%' }, delay );
+                  
+            $(this).prop('Counter',0).animate({
+                Counter: $(this).text()
+            }, {
+                duration: delay,
+                easing: 'swing'
+            });
+        });
+  
+        if(document.querySelector('.owl-carousel3') != null){
+          $('.owl-carousel3').owlCarousel({
+            loop: true,
+            margin: 10,
+            nav: true,
+            autoplay: true,
+            autoplayTimeout: 5000,
+            autoplayHoverPause: false,
+            responsive: {
+                0: {
+                    items: 1
+                },
+                600: {
+                    items: 2
+                },
+                1000: {
+                    items: 3
+                }
+            }
+        });
         }
+      },
+      error : function (e){
+        console.log(e);
+      }
+    })
+  }
 
-        let SetTerkumpul = '';
+  getDataAmal();
 
-        if(parseInt(item.terkumpul) != 0){
-          SetTerkumpul = Formater.toRupiah(item.terkumpul);
-        } else {
-          SetTerkumpul = 'Rp. 0';
-        }
+  const cariJudulAmal = document.getElementById('cariJudulAmal');
+  const clickJudulAmal = document.getElementById('clickJudulAmal');
 
-        if(hari > 0){
-          hari = `${hari} Hari Lagi`;
-        } else {
-          hari = 'Selesai';
-        }
+  function searchJudul(data, errorMassage){
+    $.ajax({
+      url : 'http://localhost/AmalBox/Api/cariAmal.php',
+      type : 'GET',
+      dataType : 'JSON',
+      data : {
+        key : data
+      },
+      success : (result) => {
 
-        if(getAmal != null){
-          $(getAmal).append(`<div class="item">
-          <div class="">
+        if(result.message == 'Data Found'){
+          if(errorMassage != null){
+            errorMassage.remove(errorMassage);
+          }
+
+          result.data.forEach((item) => {
+            const getTimeStart = new Date().getTime();
+            const getTimeEnd = new Date(item.tgl_selesai).getTime();
+            const getAmal2 = document.querySelector('.getAmal2');
+    
+            const selisih = getTimeEnd - getTimeStart;
+            let hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
+    
+            let getProgress = Math.round((parseInt(item.terkumpul) * 100) / parseInt(item.dana));
+    
+            if(parseInt(item.terkumpul) > parseInt(item.dana)){
+              getProgress = '100';
+            }
+    
+            let SetTerkumpul = '';
+    
+            if(parseInt(item.terkumpul) != 0){
+              SetTerkumpul = Formater.toRupiah(item.terkumpul);
+            } else {
+              SetTerkumpul = 'Rp. 0';
+            }
+    
+            if(hari > 0){
+              hari = `${hari} Hari Lagi`;
+            } else {
+              hari = 'Selesai';
+            }
+    
+              $(getAmal2).html(`<div class="col-lg-4">
               <div class="card">
                   <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
                       <div class="card-image">
@@ -151,21 +351,21 @@ $(document).ready(function() {
                       </span>
                       <span class="text-right ml-auto">
                           <b>${getProgress}%</b> Progress <br>
-                          <b>${hari}</b>
+                          <b>${hari}</b> Hari Lagi
                       </span>
                   </div>
                   <div class="card-body">
-                      <div class="card-title ">
+                      <div class="card-title mb-3">
                           <a href="${BASE_URL}/amal.php?id=${item.id_amal}">
                               <h4 class="align-middle text-center">${item.judul}</h4>
                           </a>
                       </div>
                       <p class="card-text">${item.detail}</p>
-                      <a href="${BASE_URL}/amal.php?id=${item.id_amal}" class="btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
+                      <a href="${BASE_URL}/amal.php?id=${item.id_amal}" class="mt-3 btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
                       <div class="uploader d-flex justify-content-between">
                           <div class="p2 d-flex align-flex-center">
-                              <span class="">
-                                  <img src="${BASE_URL}/img/icon.png" class="rounded-circle">
+                              <span class="d-flex">
+                                  <img src="${BASE_URL}/img/icon.png" class="rounded-circle align-flex-center align-self-center" style="width: 30px;height: 30px">
                               </span>
                               <span class="d-flex">
                                   <a href="#" class="align-flex-center align-self-center">RidwanAmal</a>
@@ -173,112 +373,63 @@ $(document).ready(function() {
                           </div>
                           <div class="line-card p2 d-flex align-self-center">
                           </div>
-                          <div class="p2 d-flex">
+                          <div class="p2 d-flex" style="overflow: hidden;">
                               <span class="icon-map d-flex">
-                                  <i class="fa fa-map-marker fa-2x align-self-center"></i>
+                                  <i class="fa fa-map-marker fa-2x align-self-center" style="font-size: 20px;"></i>
                               </span>
-                              <span class="lokasi d-flex">
-                                  <a href="#" class="justify-content-right align-self-center">${item.alamat}</a>
+                              <span class="lokasi">
+                                  <a href="#" class="justify-content-right align-flex-center align-self-center">${item.alamat}</a>
                               </span>
                           </div>
                       </div>
                   </div>
               </div>
-          </div>
-      </div>`);
+          </div>`);
+    
+          })
+
+          //Progress bar
+          var delay = 500;
+          $(".progress-bar").each(function(i){
+              $(this).delay( delay*i ).animate( { width: $(this).attr('aria-valuenow') + '%' }, delay );
+                    
+              $(this).prop('Counter',0).animate({
+                  Counter: $(this).text()
+              }, {
+                  duration: delay,
+                  easing: 'swing'
+              });
+          });
+
         } else {
-          $(getAmal2).append(`<div class="col-lg-4">
-          <div class="card">
-              <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
-                  <div class="card-image">
-                      <img class="img-fluid" src="${BASE_URL}/uploads/photos/${item.gambar}" alt="Card image cap">
-                  </div>
-              </a>
-              <span class="align-self-end tag"><a href="${BASE_URL}/amal.php?id=${item.id_amal}">Pemberdayaan</a></span>
-              <div class="progress align-self-center">
-                  <div class="progress-bar" role="progressbar" aria-valuenow="${getProgress}" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-              <div class="card-info">
-                  <span class="text-left">
-                      Terkumpul <br>
-                      <b>${SetTerkumpul}</b>
-                  </span>
-                  <span class="text-right ml-auto">
-                      <b>${getProgress}%</b> Progress <br>
-                      <b>${hari}</b> Hari Lagi
-                  </span>
-              </div>
-              <div class="card-body">
-                  <div class="card-title mb-3">
-                      <a href="${BASE_URL}/amal.php?id=${item.id_amal}">
-                          <h4 class="align-middle text-center">${item.judul}</h4>
-                      </a>
-                  </div>
-                  <p class="card-text">${item.detail}</p>
-                  <a href="${BASE_URL}/amal.php?id=${item.id_amal}" class="mt-3 btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
-                  <div class="uploader d-flex justify-content-between">
-                      <div class="p2 d-flex align-flex-center">
-                          <span class="d-flex">
-                              <img src="${BASE_URL}/img/icon.png" class="rounded-circle align-flex-center align-self-center" style="width: 30px;height: 30px">
-                          </span>
-                          <span class="d-flex">
-                              <a href="#" class="align-flex-center align-self-center">RidwanAmal</a>
-                          </span>
-                      </div>
-                      <div class="line-card p2 d-flex align-self-center">
-                      </div>
-                      <div class="p2 d-flex" style="overflow: hidden;">
-                          <span class="icon-map d-flex">
-                              <i class="fa fa-map-marker fa-2x align-self-center" style="font-size: 20px;"></i>
-                          </span>
-                          <span class="lokasi">
-                              <a href="#" class="justify-content-right align-flex-center align-self-center">${item.alamat}</a>
-                          </span>
-                      </div>
-                  </div>
-              </div>
-          </div>
-      </div>`);
+          const getAmal2 = document.querySelector('.getAmal2');
+          getAmal2.innerHTML = `<h2 class="text-center mt-3 errorMassage">${result.message}</h2>`;
+        }
+      },
+      error : (e) => {
+        console.log(e);
+      }
+    })
+  }
+
+  if(cariJudulAmal != null){
+    cariJudulAmal.addEventListener('keyup', async (elemnt) => {
+      const errorMassage = document.querySelector('.errorMassage');
+      const getAmal2 = document.querySelector('.getAmal2');
+      const dataValue =  elemnt.target.value;
+
+      if(elemnt.target.value.length == 0){
+        if(errorMassage != null){
+          errorMassage.remove(errorMassage);
         }
 
-      })
+        [...getAmal2.childNodes].forEach((item) => {
+          item.remove(item);
+        });
 
-      //Progress bar
-      var delay = 500;
-      $(".progress-bar").each(function(i){
-          $(this).delay( delay*i ).animate( { width: $(this).attr('aria-valuenow') + '%' }, delay );
-                
-          $(this).prop('Counter',0).animate({
-              Counter: $(this).text()
-          }, {
-              duration: delay,
-              easing: 'swing'
-          });
-      });
-
-      if($('.owl-carousel3') != null){
-        $('.owl-carousel3').owlCarousel({
-          loop: true,
-          margin: 10,
-          nav: true,
-          autoplay: true,
-          autoplayTimeout: 5000,
-          autoplayHoverPause: false,
-          responsive: {
-              0: {
-                  items: 1
-              },
-              600: {
-                  items: 2
-              },
-              1000: {
-                  items: 3
-              }
-          }
-      });
+        getDataAmal();
+      } else {
+        await searchJudul(dataValue, errorMassage);
       }
-    },
-    error : function (e){
-      console.log(e);
-    }
-  })
+    });
+  }
