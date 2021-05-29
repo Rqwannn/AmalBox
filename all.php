@@ -8,7 +8,7 @@ require_once "app.php"
 <head>
     <meta charset="utf-8">
 
-    <title>AmalBox</title>
+    <title>RidwanAmal</title>
     <link rel="icon" href="<?= BASE_URL; ?>/img/icon.png">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/css/bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/css/font-awesome.min.css">
@@ -140,117 +140,8 @@ require_once "app.php"
                     </form>
                     <br>
 
+                    <div class="getAmal2">
 
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <a href="<?= BASE_URL; ?>/amal.php" title="">
-                                <div class="card-image">
-                                    <img class="img-fluid" src="<?= BASE_URL; ?>/uploads/photos/5e255d30da4ab.jpg" alt="Card image cap">
-                                </div>
-                            </a>
-                            <span class="align-self-end tag"><a href="<?= BASE_URL; ?>/amal.php">Pemberdayaan</a></span>
-                            <div class="progress align-self-center">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="card-info">
-                                <span class="text-left">
-                                    Terkumpul <br>
-                                    <b>Rp 0</b>
-                                </span>
-                                <span class="text-right ml-auto">
-                                    <b>0%</b> Progress <br>
-                                    <b>375</b> Hari Lagi
-                                </span>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-title mb-3">
-                                    <a href="<?= BASE_URL; ?>/amal.php">
-                                        <h4 class="align-middle text-center">Rumah Tahfidz Sahabat Quran Ar Raheem</h4>
-                                    </a>
-                                </div>
-                                <p class="card-text">Sebuah organiasi non profit yang
-                                    bergerak di bidang pendidikan agama
-                                    Islam dengan tujuan utamanya menghafal minimal 1 juz dalam 2 tahun</p>
-                                <a href="<?= BASE_URL; ?>/amal.php" class="mt-3 btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
-                                <div class="uploader d-flex justify-content-between">
-                                    <div class="p2 d-flex align-flex-center">
-                                        <span class="d-flex">
-                                            <img src="<?= BASE_URL; ?>/img/icon.png" class="rounded-circle align-flex-center align-self-center" style="width: 30px;height: 30px">
-                                        </span>
-                                        <span class="d-flex">
-                                            <a href="#" class="align-flex-center align-self-center">AmalBox</a>
-                                        </span>
-                                    </div>
-                                    <div class="line-card p2 d-flex align-self-center">
-                                    </div>
-                                    <div class="p2 d-flex" style="overflow: hidden;">
-                                        <span class="icon-map d-flex">
-                                            <i class="fa fa-map-marker fa-2x align-self-center" style="font-size: 20px;"></i>
-                                        </span>
-                                        <span class="lokasi">
-                                            <a href="#" class="justify-content-right align-flex-center align-self-center">Jl. Apel 5, Sukamaju Baru, Kec. Tapos, Kota Depok, Jawa Barat 16455</a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-lg-4">
-                        <div class="card">
-                            <a href="<?= BASE_URL; ?>/amal.php" title="">
-                                <div class="card-image">
-                                    <img class="img-fluid" src="<?= BASE_URL; ?>/uploads/photos/5e255d30da4ab.jpg" alt="Card image cap">
-                                </div>
-                            </a>
-                            <span class="align-self-end tag"><a href="<?= BASE_URL; ?>/amal.php">Pemberdayaan</a></span>
-                            <div class="progress align-self-center">
-                                <div class="progress-bar" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
-                            </div>
-                            <div class="card-info">
-                                <span class="text-left">
-                                    Terkumpul <br>
-                                    <b>Rp 0</b>
-                                </span>
-                                <span class="text-right ml-auto">
-                                    <b>0%</b> Progress <br>
-                                    <b>375</b> Hari Lagi
-                                </span>
-                            </div>
-                            <div class="card-body">
-                                <div class="card-title mb-3">
-                                    <a href="<?= BASE_URL; ?>/amal.php">
-                                        <h4 class="align-middle text-center">Rumah Tahfidz Sahabat Quran Ar Raheem</h4>
-                                    </a>
-                                </div>
-                                <p class="card-text">Sebuah organiasi non profit yang
-                                    bergerak di bidang pendidikan agama
-                                    Islam dengan tujuan utamanya menghafal minimal 1 juz dalam 2 tahun</p>
-                                <a href="<?= BASE_URL; ?>/amal.php" class="mt-3 btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
-                                <div class="uploader d-flex justify-content-between">
-                                    <div class="p2 d-flex align-flex-center">
-                                        <span class="d-flex">
-                                            <img src="<?= BASE_URL; ?>/img/icon.png" class="rounded-circle align-flex-center align-self-center" style="width: 30px;height: 30px">
-                                        </span>
-                                        <span class="d-flex">
-                                            <a href="#" class="align-flex-center align-self-center">AmalBox</a>
-                                        </span>
-                                    </div>
-                                    <div class="line-card p2 d-flex align-self-center">
-                                    </div>
-                                    <div class="p2 d-flex" style="overflow: hidden;">
-                                        <span class="icon-map d-flex">
-                                            <i class="fa fa-map-marker fa-2x align-self-center" style="font-size: 20px;"></i>
-                                        </span>
-                                        <span class="lokasi">
-                                            <a href="#" class="justify-content-right align-flex-center align-self-center">
-                                                DKI Jakarta
-                                            </a>
-                                        </span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
 
                 </div>
@@ -312,6 +203,7 @@ require_once "app.php"
     <script type="text/javascript" src=".<?= BASE_URL; ?>/js/jquery.dataTables.min.js"></script>
     <script type="text/javascript" src=".<?= BASE_URL; ?>/js/dataTables.bootstrap4.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/autonumeric@4.1.0"></script>
+    <script src="<?= BASE_URL ?>/JS/FormatMoney.js"></script>
     <script src="<?= BASE_URL; ?>/js/custom.js"></script>
     <script>
         $(window).scroll(function() {

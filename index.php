@@ -20,14 +20,14 @@ require_once "app.php";
     <link rel="stylesheet" href="<?= BASE_URL ?>/CSS/style.css">
     <script src="https://kit.fontawesome.com/d1a508a7c1.js" crossorigin="anonymous"></script>
 
-    <title>AmalBox</title>
+    <title>RidwanAmal</title>
 </head>
 
 <body>
     <div class="giftunggu"></div>
     <nav class="navbar fixed-top navbar-light bg-light opaque">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center justify-content-center" href="/">
+            <a class="navbar-brand d-flex align-items-center justify-content-center" href="#">
                 <div style="font-size: 35px;   font-family: system-ui, -apple-system, ' Segoe UI', Roboto, 'Helvetica Neue' , Arial, 'Noto Sans' , sans-serif, 'Apple Color Emoji' , 'Segoe UI Emoji' , 'Segoe UI Symbol' , 'Noto Color Emoji' ; color: #53657D">
                     RidwanAmal
                 </div>
@@ -99,7 +99,7 @@ require_once "app.php";
                         </a>
                     </div>
                     <center>
-                        <a href="https://amalbox.org/amal" title="Hitung Zakat"> <button type="button" class="btn btn-custom wow fadeInRight">Beramal Sekarang</button></a>
+                        <a href="all.php" title="Hitung Zakat"> <button type="button" class="btn btn-custom wow fadeInRight">Beramal Sekarang</button></a>
                     </center>
                 </div>
             </div>
@@ -168,9 +168,9 @@ require_once "app.php";
                     </div>
                     <div class="col-md-4 offset-md-5 footer-contact wow fadeInDown">
                         <h3>Contact</h3>
-                        <p><i class="fa fa-map-marker"></i> Jl. Pahlawan Revolusi No.41 Jakarta</p>
-                        <p><i class="fa fa-phone"></i> Phone: 021 2208 6938</p>
-                        <p><i class="fa fa-envelope"></i> Email: <a href="mailto:hello@amalbox.org">info@amalbox.org</a></p>
+                        <p><i class="fa fa-map-marker"></i> Jl. Tapos</p>
+                        <p><i class="fa fa-phone"></i> Phone: 021 1234 1234</p>
+                        <p><i class="fa fa-envelope"></i> Email: <a href="#">info@RidwanAmal.com</a></p>
                     </div>
                 </div>
             </div>
@@ -179,12 +179,7 @@ require_once "app.php";
             <div class="container">
                 <div class="d-flex">
                     <div class="p2 footer-copyright">
-                        Copyright &copy; 2021 - Muhammad Ibnu
-                    </div>
-                    <div class="ml-auto p2 footer-social">
-                        <a href="http://facebook.com/amalboxorg" target="_blank"><i class="fa fa-facebook-f"></i></a>
-                        <a href="http://twitter.com/amalboxorg" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="http://instagram.com/amalboxorg" target="_blank"><i class="fa fa-instagram"></i></a>
+                        Copyright &copy; 2021 - Muhammad Ridwan
                     </div>
                 </div>
             </div>

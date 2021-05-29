@@ -103,9 +103,10 @@ $(document).ready(function() {
     success : function (result){
 
       result.data.forEach((item) => {
-        const getTimeStart = new Date(item.tgl_mulai).getTime();
+        const getTimeStart = new Date().getTime();
         const getTimeEnd = new Date(item.tgl_selesai).getTime();
         const getAmal = document.querySelector('.getAmal');
+        const getAmal2 = document.querySelector('.getAmal2');
 
         const selisih = getTimeEnd - getTimeStart;
         let hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
@@ -130,61 +131,130 @@ $(document).ready(function() {
           hari = 'Selesai';
         }
 
-        $(getAmal).append(`<div class="item">
-        <div class="">
-            <div class="card">
-                <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
-                    <div class="card-image">
-                        <img class="img-fluid" src="${BASE_URL}/uploads/photos/${item.gambar}" alt="Card image cap">
-                    </div>
-                </a>
-                <span class="align-self-end tag"><a href="#">Pemberdayaan</a></span>
-                <div class="progress align-self-center">
-                    <div class="progress-bar" role="progressbar" aria-valuenow="${getProgress}" aria-valuemin="0" aria-valuemax="100"></div>
-                </div>
-                <div class="card-info">
-                    <span class="text-left">
-                        Terkumpul <br>
-                        <b>${SetTerkumpul}</b>
-                    </span>
-                    <span class="text-right ml-auto">
-                        <b>${getProgress}%</b> Progress <br>
-                        <b>${hari}</b>
-                    </span>
-                </div>
-                <div class="card-body">
-                    <div class="card-title ">
-                        <a href="${BASE_URL}/amal.php?id=${item.id_amal}">
-                            <h4 class="align-middle text-center">${item.judul}</h4>
-                        </a>
-                    </div>
-                    <p class="card-text">${item.judul}</p>
-                    <a href="${BASE_URL}/amal.php?id=${item.id_amal}" class="btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
-                    <div class="uploader d-flex justify-content-between">
-                        <div class="p2 d-flex align-flex-center">
-                            <span class="">
-                                <img src="${BASE_URL}/img/icon.png" class="rounded-circle">
-                            </span>
-                            <span class="d-flex">
-                                <a href="#" class="align-flex-center align-self-center">AmalBox</a>
-                            </span>
-                        </div>
-                        <div class="line-card p2 d-flex align-self-center">
-                        </div>
-                        <div class="p2 d-flex">
-                            <span class="icon-map d-flex">
-                                <i class="fa fa-map-marker fa-2x align-self-center"></i>
-                            </span>
-                            <span class="lokasi d-flex">
-                                <a href="#" class="justify-content-right align-self-center">${item.alamat}</a>
-                            </span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>`);
+        if(getAmal != null){
+          $(getAmal).append(`<div class="item">
+          <div class="">
+              <div class="card">
+                  <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
+                      <div class="card-image">
+                          <img class="img-fluid" src="${BASE_URL}/uploads/photos/${item.gambar}" alt="Card image cap">
+                      </div>
+                  </a>
+                  <span class="align-self-end tag"><a href="${BASE_URL}/amal.php?id=${item.id_amal}">Pemberdayaan</a></span>
+                  <div class="progress align-self-center">
+                      <div class="progress-bar" role="progressbar" aria-valuenow="${getProgress}" aria-valuemin="0" aria-valuemax="100"></div>
+                  </div>
+                  <div class="card-info">
+                      <span class="text-left">
+                          Terkumpul <br>
+                          <b>${SetTerkumpul}</b>
+                      </span>
+                      <span class="text-right ml-auto">
+                          <b>${getProgress}%</b> Progress <br>
+                          <b>${hari}</b>
+                      </span>
+                  </div>
+                  <div class="card-body">
+                      <div class="card-title ">
+                          <a href="${BASE_URL}/amal.php?id=${item.id_amal}">
+                              <h4 class="align-middle text-center">${item.judul}</h4>
+                          </a>
+                      </div>
+                      <p class="card-text">${item.detail}</p>
+                      <a href="${BASE_URL}/amal.php?id=${item.id_amal}" class="btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
+                      <div class="uploader d-flex justify-content-between">
+                          <div class="p2 d-flex align-flex-center">
+                              <span class="">
+                                  <img src="${BASE_URL}/img/icon.png" class="rounded-circle">
+                              </span>
+                              <span class="d-flex">
+                                  <a href="#" class="align-flex-center align-self-center">RidwanAmal</a>
+                              </span>
+                          </div>
+                          <div class="line-card p2 d-flex align-self-center">
+                          </div>
+                          <div class="p2 d-flex">
+                              <span class="icon-map d-flex">
+                                  <i class="fa fa-map-marker fa-2x align-self-center"></i>
+                              </span>
+                              <span class="lokasi d-flex">
+                                  <a href="#" class="justify-content-right align-self-center">${item.alamat}</a>
+                              </span>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>`);
+        } else {
+          $(getAmal2).append(`<div class="col-lg-4">
+          <div class="card">
+              <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
+                  <div class="card-image">
+                      <img class="img-fluid" src="${BASE_URL}/uploads/photos/${item.gambar}" alt="Card image cap">
+                  </div>
+              </a>
+              <span class="align-self-end tag"><a href="${BASE_URL}/amal.php?id=${item.id_amal}">Pemberdayaan</a></span>
+              <div class="progress align-self-center">
+                  <div class="progress-bar" role="progressbar" aria-valuenow="${getProgress}" aria-valuemin="0" aria-valuemax="100"></div>
+              </div>
+              <div class="card-info">
+                  <span class="text-left">
+                      Terkumpul <br>
+                      <b>${SetTerkumpul}</b>
+                  </span>
+                  <span class="text-right ml-auto">
+                      <b>${getProgress}%</b> Progress <br>
+                      <b>${hari}</b> Hari Lagi
+                  </span>
+              </div>
+              <div class="card-body">
+                  <div class="card-title mb-3">
+                      <a href="${BASE_URL}/amal.php?id=${item.id_amal}">
+                          <h4 class="align-middle text-center">${item.judul}</h4>
+                      </a>
+                  </div>
+                  <p class="card-text">${item.detail}</p>
+                  <a href="${BASE_URL}/amal.php?id=${item.id_amal}" class="mt-3 btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
+                  <div class="uploader d-flex justify-content-between">
+                      <div class="p2 d-flex align-flex-center">
+                          <span class="d-flex">
+                              <img src="${BASE_URL}/img/icon.png" class="rounded-circle align-flex-center align-self-center" style="width: 30px;height: 30px">
+                          </span>
+                          <span class="d-flex">
+                              <a href="#" class="align-flex-center align-self-center">RidwanAmal</a>
+                          </span>
+                      </div>
+                      <div class="line-card p2 d-flex align-self-center">
+                      </div>
+                      <div class="p2 d-flex" style="overflow: hidden;">
+                          <span class="icon-map d-flex">
+                              <i class="fa fa-map-marker fa-2x align-self-center" style="font-size: 20px;"></i>
+                          </span>
+                          <span class="lokasi">
+                              <a href="#" class="justify-content-right align-flex-center align-self-center">${item.alamat}</a>
+                          </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>`);
+        }
+
       })
+
+      //Progress bar
+      var delay = 500;
+      $(".progress-bar").each(function(i){
+          $(this).delay( delay*i ).animate( { width: $(this).attr('aria-valuenow') + '%' }, delay );
+                
+          $(this).prop('Counter',0).animate({
+              Counter: $(this).text()
+          }, {
+              duration: delay,
+              easing: 'swing'
+          });
+      });
 
       if($('.owl-carousel3') != null){
         $('.owl-carousel3').owlCarousel({
@@ -206,19 +276,6 @@ $(document).ready(function() {
               }
           }
       });
-
-          //Progress bar
-          var delay = 500;
-          $(".progress-bar").each(function(i){
-              $(this).delay( delay*i ).animate( { width: $(this).attr('aria-valuenow') + '%' }, delay );
-          
-              $(this).prop('Counter',0).animate({
-                  Counter: $(this).text()
-              }, {
-                  duration: delay,
-                  easing: 'swing'
-              });
-          });
       }
     },
     error : function (e){

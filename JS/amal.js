@@ -23,7 +23,7 @@ $.ajax({
 
         const progresAmal = document.querySelector('.progresAmal');
 
-        const getTimeStart = new Date(result.data.tgl_mulai).getTime();
+        const getTimeStart = new Date().getTime();
         const getTimeEnd = new Date(result.data.tgl_selesai).getTime();
 
         const selisih = getTimeEnd - getTimeStart;
