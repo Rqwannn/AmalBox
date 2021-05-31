@@ -284,7 +284,7 @@ if(BodySetAdmin != null){
 
 		  BodySetAdmin.innerHTML = setCard;
 
-		  $("#TableOrder").DataTable({
+		  $("#TableDataProgram").DataTable({
             paging: true,
             aLengthMenu: [
                 [10, 30, 50, -1],
@@ -294,11 +294,43 @@ if(BodySetAdmin != null){
             ordering: true,
             info: true,
             autoWidth: true,
-            responsive: true,
+            responsive: false,
             language: {
                 search: "",
             }
         })
+		$('.dataTables_paginate').addClass('btn-group datatable-pagination');
+        $('.dataTables_paginate > a').wrapInner('<span />');
+        $('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+        $('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+		},
+		error : (e) => {
+		  console.log(e);
+		}
+	  });
+}
+
+function HapusDataProgram (event, data){
+	event.preventDefault();
+	$.ajax({
+		url : 'http://localhost/AmalBox/Api/hapusAmal.php',
+		type : 'POST',
+		dataType : 'JSON',
+		data : {
+			id_amal : data
+		},
+		success : (result) => {
+			Swal.fire({
+				title: 'Success',
+				text: `${result.message}`,
+				icon: 'success',
+				confirmButtonColor: '#3085d6',
+				confirmButtonText: 'Close'
+			  }).then((result) => {
+				if (result.isConfirmed) {
+					window.location.reload();
+				}
+			  });
 		},
 		error : (e) => {
 		  console.log(e);

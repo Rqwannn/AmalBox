@@ -12,20 +12,22 @@
   --primary: #5e72e4;
 }
 
-.contentEmploye table {
+.contentTable {
   width: 100%;
   overflow-x: auto;
 }
 
-#contentTable #TableOrder {
+#contentTable #TableDataProgram {
   padding-top: 25px;
 }
 
-.contentEmploye table thead {
+.contentTable table thead,
+#contentTable #TableDataProgram thead {
   background: var(--secondary);
 }
 
-.contentEmploye table thead th {
+.contentTable table thead th,
+#contentTable #TableDataProgram thead th {
   padding: 10px 20px;
   letter-spacing: 1px;
   color: var(--grey);
@@ -36,16 +38,13 @@
   border-bottom: 1px solid rgba(0, 0, 0, 0.12);
 }
 
-#contentTable #TableOrder thead th {
+#contentTable #TableDataProgram thead th {
   padding: 15px 20px;
   text-align: center;
 }
 
-#contentTable #TableOrder-2 thead th {
-  text-align: start;
-}
-
-.contentEmploye table tbody td {
+.contentTable table tbody td,
+#contentTable #TableDataProgram tbody td {
   padding: 20px;
   color: var(--grey);
   font-size: 14px;
@@ -54,38 +53,53 @@
   text-transform: normal;
 }
 
-#contentTable #TableOrder tbody td {
+#contentTable #TableDataProgram tbody td {
   padding: 15px 20px;
   text-align: center;
 }
 
-#contentTable #TableOrder-2 tbody td {
-  text-align: start;
+.dataTables_info {
+  margin-left: 15px;
 }
 
-.leftFooter a,
-.rightFooter {
-  text-transform: uppercase;
-  letter-spacing: 1px;
+.sorting::before,
+.sorting::after,
+.sorting_asc::before,
+.sorting_asc::after,
+.sorting_desc::before,
+.sorting_desc::after {
+  content: "";
+  font-size: 0px;
+}
+
+#TableDataProgram_filter label input {
+  color: var(--gray);
+}
+
+#TableDataProgram_info {
+  color: var(--gray);
+  margin-top: 5px;
   font-size: 15px;
-  color: var(--grey);
 }
 
-.leftFooter a:hover {
-  color: var(--grey);
+.btn-table {
+  border: none;
+  outline: none;
+  font-size: 14px;
+  padding: 10px;
+  color: #fff;
+  border-radius: 3px;
 }
 
-.cardEditMenu {
-  width: 100%;
-  padding: 20px;
-  border-radius: 5px;
-  box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12),
-    0 7px 10px -5px rgba(0, 0, 0, 0.15);
-  background: #fff;
+.btn-table:nth-child(1) {
+  background: var(--blue);
 }
 
-.BackDashbord {
-  font-weight: 400;
-  color: var(--grey);
-  font-size: 15px;
+.btn-table:nth-child(2) {
+  background: var(--danger);
+}
+
+.dataTables_paginate a {
+  padding-bottom: 25px;
+  margin: 15px 10px;
 }

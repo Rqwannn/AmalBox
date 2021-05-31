@@ -83,8 +83,8 @@ require_once "app.php";
                                 <h3>
                                     Tabel Data Program</h3>
                             </div>
-                            <div id="contentTable" class="contentEmploye my-4">
-                                <table border="0" id="TableOrder" class="table table-hover mt-4">
+                            <div class="contentTable my-5">
+                                <table id="TableDataProgram" border="0" class="table table-hover table-resposive mt-4">
                                     <thead>
                                         <tr>
                                             <th>
@@ -134,14 +134,15 @@ require_once "app.php";
             <b class="copyright">&copy; 2021 Ridwan Amal </b>All rights reserved.
         </div>
     </div>
-    <script src="<?= BASE_URL; ?>/js/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="<?= BASE_URL; ?>/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-    <script src="<?= BASE_URL; ?>/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="<?= BASE_URL; ?>/js/flot/jquery.flot.js" type="text/javascript"></script>
-    <script src="<?= BASE_URL; ?>/js/flot/jquery.flot.resize.js" type="text/javascript"></script>
-    <script src="<?= BASE_URL; ?>/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
-    <script src="<?= BASE_URL; ?>/js/datatables/jquery.dataTables.js" type="text/javascript"></script>
-    <script src="<?= BASE_URL; ?>/js/common.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL; ?>/JS/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL; ?>/JS/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL; ?>/JS/bootstrap.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL; ?>/JS/flot/jquery.flot.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL; ?>/JS/flot/jquery.flot.resize.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL; ?>/JS/dataTables.bootstrap4.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL; ?>/JS/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL; ?>/JS/sweetalert2.all.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL; ?>/JS/common.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/d1a508a7c1.js" crossorigin="anonymous"></script>
 
 </body>
