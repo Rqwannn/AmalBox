@@ -37,7 +37,7 @@ require_once "app.php";
             </div>
             <a href="<?= BASE_URL; ?>/cart.php" title="Kotak Amal">
                 <div class="kotakamal">
-                    5
+                    0
                 </div>
             </a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">

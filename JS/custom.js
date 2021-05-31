@@ -433,3 +433,19 @@ $(document).ready(function() {
       }
     });
   }
+
+  const kotakamal = document.querySelector('.kotakamal');
+
+  if(kotakamal != null){
+    $.ajax({
+      url : 'http://localhost/AmalBox/Api/getAllAmal.php',
+      type : 'GET',
+      dataType : 'JSON',
+      success : (result) => {
+        kotakamal.innerHTML = result.data.length;
+      },
+      error : (e) => {
+        console.log(e);
+      }
+    });
+  }
