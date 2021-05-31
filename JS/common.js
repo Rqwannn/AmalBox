@@ -1,10 +1,10 @@
 ﻿$(document).ready(function () {
     if($('.datatable-1').length>0){
-        $('.datatable-1').dataTable();
-        $('.dataTables_paginate').addClass('btn-group datatable-pagination');
-        $('.dataTables_paginate > a').wrapInner('<span />');
-        $('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
-        $('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+        // $('.datatable-1').dataTable();
+        // $('.dataTables_paginate').addClass('btn-group datatable-pagination');
+        // $('.dataTables_paginate > a').wrapInner('<span />');
+        // $('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+        // $('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
     
         $( '.slider-range').slider({
 			    range: true,
@@ -234,3 +234,74 @@
         $("#pie-interactive").bind("plotclick", pieClick);
     }
 });
+
+// JS YANG DIBUAT SENDIRI
+
+const BodySetAdmin = document.querySelector('.BodySetAdmin');
+
+if(BodySetAdmin != null){
+    $.ajax({
+		url : 'http://localhost/AmalBox/Api/getAllAmal.php',
+		type : 'GET',
+		dataType : 'JSON',
+		success : (result) => {
+		  let setCard = "";
+		  let number = 1;
+
+		  result.data.forEach((item) => {
+			setCard += `<tr class="odd gradeX">
+			<td>
+				${number++}
+			</td>
+			<td>
+				${item.judul}
+			</td>
+			<td>
+				${item.alamat}
+			</td>
+			<td class="center">
+				${item.terkumpul}
+			</td>
+			<td class="center">
+				${item.dana}
+			</td>
+			<td>
+				${item.tgl_mulai}
+			</td>
+			<td>
+				${item.tgl_selesai}
+			</td>
+			<td>
+				<a href="#" onclick="EditDataProgram(event, ${item.id_amal})" class="btn small">
+					<i class="icon-edit"></i>
+				</a>
+				<a href="#" onclick="HapusDataProgram(event, ${item.id_amal})" class="btn small">
+					<i class="icon-trash text-danger"></i>
+				</a>
+			</td>
+		</tr>`;
+		  });
+
+		  BodySetAdmin.innerHTML = setCard;
+
+		  $("#TableOrder").DataTable({
+            paging: true,
+            aLengthMenu: [
+                [10, 30, 50, -1],
+                [10, 30, 50, "All"],
+            ],
+            searching: true,
+            ordering: true,
+            info: true,
+            autoWidth: true,
+            responsive: true,
+            language: {
+                search: "",
+            }
+        })
+		},
+		error : (e) => {
+		  console.log(e);
+		}
+	  });
+}

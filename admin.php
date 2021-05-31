@@ -16,6 +16,7 @@ require_once "app.php";
     <link type="text/css" href="<?= BASE_URL; ?>/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="<?= BASE_URL; ?>/img/icons/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/css/dataTables.bootstrap4.min.css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/css/admin.css">
     <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
 </head>
 
@@ -38,7 +39,6 @@ require_once "app.php";
                 </ul>
             </div>
         </div>
-        >>>>>>> 2f67634a88b0f9fa5d4a574473d05a5de5ef2043
     </div>
     <!-- /navbar -->
     <div class="wrapper">
@@ -83,8 +83,8 @@ require_once "app.php";
                                 <h3>
                                     Tabel Data Program</h3>
                             </div>
-                            <div class="module-body table">
-                                <table cellpadding="0" cellspacing="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
+                            <div id="contentTable" class="contentEmploye my-4">
+                                <table border="0" id="TableOrder" class="table table-hover mt-4">
                                     <thead>
                                         <tr>
                                             <th>
@@ -113,67 +113,9 @@ require_once "app.php";
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr class="odd gradeX">
-                                            <td>
-                                                Trident
-                                            </td>
-                                            <td>
-                                                Internet Explorer 4.0
-                                            </td>
-                                            <td>
-                                                Win 95+
-                                            </td>
-                                            <td class="center">
-                                                4
-                                            </td>
-                                            <td class="center">
-                                                X
-                                            </td>
-                                            <td>
-                                                Trident
-                                            </td>
-                                            <td>
-                                                Internet Explorer 4.0
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn small">
-                                                    <i class="icon-edit"></i>
-                                                </a>
-                                                <a href="#" class="btn small">
-                                                    <i class="icon-trash text-danger"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    <tbody class="BodySetAdmin">
+
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>
-                                                No
-                                            </th>
-                                            <th>
-                                                Nama Program
-                                            </th>
-                                            <th>
-                                                Alamat
-                                            </th>
-                                            <th>
-                                                Terkumpul
-                                            </th>
-                                            <th>
-                                                Target
-                                            </th>
-                                            <th>
-                                                Mulai
-                                            </th>
-                                            <th>
-                                                Akhir
-                                            </th>
-                                            <th>
-                                                Action
-                                            </th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>

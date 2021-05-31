@@ -1,0 +1,91 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+:root {
+  --orange: #fb6340;
+  --green: #2dce89;
+  --red: #f5365c;
+  --grey: #8898aa;
+  --secondary: #f7fafc;
+  --primary: #5e72e4;
+}
+
+.contentEmploye table {
+  width: 100%;
+  overflow-x: auto;
+}
+
+#contentTable #TableOrder {
+  padding-top: 25px;
+}
+
+.contentEmploye table thead {
+  background: var(--secondary);
+}
+
+.contentEmploye table thead th {
+  padding: 10px 20px;
+  letter-spacing: 1px;
+  color: var(--grey);
+  font-size: 14px;
+  font-weight: 500;
+  text-transform: uppercase;
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+#contentTable #TableOrder thead th {
+  padding: 15px 20px;
+  text-align: center;
+}
+
+#contentTable #TableOrder-2 thead th {
+  text-align: start;
+}
+
+.contentEmploye table tbody td {
+  padding: 20px;
+  color: var(--grey);
+  font-size: 14px;
+  font-weight: 400;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.12);
+  text-transform: normal;
+}
+
+#contentTable #TableOrder tbody td {
+  padding: 15px 20px;
+  text-align: center;
+}
+
+#contentTable #TableOrder-2 tbody td {
+  text-align: start;
+}
+
+.leftFooter a,
+.rightFooter {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 15px;
+  color: var(--grey);
+}
+
+.leftFooter a:hover {
+  color: var(--grey);
+}
+
+.cardEditMenu {
+  width: 100%;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 4px 18px 0px rgba(0, 0, 0, 0.12),
+    0 7px 10px -5px rgba(0, 0, 0, 0.15);
+  background: #fff;
+}
+
+.BackDashbord {
+  font-weight: 400;
+  color: var(--grey);
+  font-size: 15px;
+}
