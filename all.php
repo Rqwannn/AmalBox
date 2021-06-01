@@ -113,7 +113,7 @@ require_once "app.php"
 
                     <form id="filter" method="GET">
                         <div class="d-flex">
-                            <div class="p-2">Daftar Program <b>1 - 2</b> dari <b>2</b></div>
+                            <div class="p-2">Daftar Program <b class="DataWeb">0</b> dari <b class="DataBase">0</b></div>
                             <div class="ml-auto p-2">
                                 <div class="col-auto">
                                     <select id="selecfilter" class="custom-select mr-sm-2" name="urutkan">

@@ -102,12 +102,20 @@ $(document).ready(function() {
       type : 'GET',
       dataType : 'JSON',
       success : function (result){
+        const DataWeb = document.querySelector('.DataWeb');
+        const DataBase = document.querySelector('.DataBase');
+
+        DataWeb.innerHTML = result.data.length;
+        DataBase.innerHTML = result.data.length;
+
+        const getAmal = document.querySelector('.getAmal');
+        const getAmal2 = document.querySelector('.getAmal2');
+
+        let card = "";
   
         result.data.forEach((item) => {
           const getTimeStart = new Date().getTime();
           const getTimeEnd = new Date(item.tgl_selesai).getTime();
-          const getAmal = document.querySelector('.getAmal');
-          const getAmal2 = document.querySelector('.getAmal2');
   
           const selisih = getTimeEnd - getTimeStart;
           let hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
@@ -133,7 +141,7 @@ $(document).ready(function() {
           }
   
           if(getAmal != null){
-            $(getAmal).append(`<div class="item">
+            card += `<div class="item">
             <div class="">
                 <div class="card">
                     <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
@@ -186,9 +194,9 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>
-        </div>`);
-          } else {
-            $(getAmal2).append(`<div class="col-lg-4">
+        </div>`;
+          } else if(getAmal2 != null) {
+            card += `<div class="col-lg-4">
             <div class="card">
                 <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
                     <div class="card-image">
@@ -239,10 +247,16 @@ $(document).ready(function() {
                     </div>
                 </div>
             </div>
-        </div>`);
+        </div>`
           }
   
         })
+
+        if(getAmal != null){
+          getAmal.innerHTML = card;
+        } else if (getAmal2 != null){
+          getAmal2.innerHTML = card;
+        }
   
         //Progress bar
         var delay = 500;
@@ -291,6 +305,8 @@ $(document).ready(function() {
   const clickJudulAmal = document.getElementById('clickJudulAmal');
 
   function searchJudul(data, errorMassage){
+    const DataWeb = document.querySelector('.DataWeb');
+    
     $.ajax({
       url : 'http://localhost/AmalBox/Api/cariAmal.php',
       type : 'GET',
@@ -299,16 +315,20 @@ $(document).ready(function() {
         key : data
       },
       success : (result) => {
-
+        
+        
         if(result.message == 'Data Found'){
           if(errorMassage != null){
             errorMassage.remove(errorMassage);
           }
-
+          
+          DataWeb.innerHTML = result.data.length;
+          const getAmal2 = document.querySelector('.getAmal2');
+          let card = "";
+          
           result.data.forEach((item) => {
             const getTimeStart = new Date().getTime();
             const getTimeEnd = new Date(item.tgl_selesai).getTime();
-            const getAmal2 = document.querySelector('.getAmal2');
     
             const selisih = getTimeEnd - getTimeStart;
             let hari = Math.floor(selisih / (1000 * 60 * 60 * 24));
@@ -333,7 +353,7 @@ $(document).ready(function() {
               hari = 'Selesai';
             }
     
-              $(getAmal2).html(`<div class="col-lg-4">
+              card += `<div class="col-lg-4">
               <div class="card">
                   <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
                       <div class="card-image">
@@ -384,9 +404,11 @@ $(document).ready(function() {
                       </div>
                   </div>
               </div>
-          </div>`);
+          </div>`
     
           })
+
+          getAmal2.innerHTML = card;
 
           //Progress bar
           var delay = 500;
@@ -403,8 +425,10 @@ $(document).ready(function() {
 
         } else {
           const getAmal2 = document.querySelector('.getAmal2');
+          DataWeb.innerHTML = 0;
           getAmal2.innerHTML = `<h2 class="text-center mt-3 errorMassage">${result.message}</h2>`;
         }
+        
       },
       error : (e) => {
         console.log(e);
@@ -422,10 +446,6 @@ $(document).ready(function() {
         if(errorMassage != null){
           errorMassage.remove(errorMassage);
         }
-
-        [...getAmal2.childNodes].forEach((item) => {
-          item.remove(item);
-        });
 
         getDataAmal();
       } else {

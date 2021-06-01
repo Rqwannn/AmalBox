@@ -335,5 +335,5 @@ function HapusDataProgram (event, data){
 		error : (e) => {
 		  console.log(e);
 		}
-	  });
+	});
 }
