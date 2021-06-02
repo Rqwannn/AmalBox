@@ -47,9 +47,9 @@ require_once "app.php";
                 <div class="col-md-3">
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled" style="list-style-type: none;padding:0;">
-                            <li class=""><a href="<?= BASE_URL; ?>/admin.php"><i class="menu-icon icon-dashboard"></i>Utama
+                            <li><a href="<?= BASE_URL; ?>/admin.php"><i class="menu-icon icon-dashboard"></i>Utama
                                 </a></li>
-                            <li><a href="<?= BASE_URL; ?>"><i class="menu-icon icon-inbox"></i>Dana Donatur<b class="label green pull-right">
+                            <li><a href="<?= BASE_URL; ?>/donatur.php"><i class="menu-icon icon-inbox"></i>Dana Donatur<b class="label green pull-right">
                                         11</b> </a></li>
                             <li class="active"><a href="<?= BASE_URL; ?>/add-admin.php"><i class="menu-icon icon-dashboard"></i>Tambah Admin
                                 </a></li>

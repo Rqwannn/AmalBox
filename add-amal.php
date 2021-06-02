@@ -15,7 +15,9 @@ require_once "app.php";
     <link type="text/css" href="<?= BASE_URL; ?>/css/bootstrap-responsive.min.css" rel="stylesheet">
     <link type="text/css" href="<?= BASE_URL; ?>/img/icons/css/font-awesome.css" rel="stylesheet">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/css/dataTables.bootstrap4.min.css">
-    <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/css/jquery-ui.css">
+    <link rel="stylesheet" href="<?= BASE_URL; ?>/css/admin.css">
+    <link type=" text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
 </head>
 
 <body>
@@ -46,9 +48,9 @@ require_once "app.php";
                 <div class="col-md-3">
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled" style="list-style-type: none;padding:0;">
-                            <li class=""><a href="<?= BASE_URL; ?>/admin.php"><i class="menu-icon icon-dashboard"></i>Utama
+                            <li><a href="<?= BASE_URL; ?>/admin.php"><i class="menu-icon icon-dashboard"></i>Utama
                                 </a></li>
-                            <li><a href="<?= BASE_URL; ?>"><i class="menu-icon icon-inbox"></i>Dana Donatur<b class="label green pull-right">
+                            <li><a href="<?= BASE_URL; ?>/donatur.php"><i class="menu-icon icon-inbox"></i>Dana Donatur<b class="label green pull-right">
                                         11</b> </a></li>
                             <li class=""><a href="<?= BASE_URL; ?>/add-admin.php"><i class="menu-icon icon-dashboard"></i>Tambah Admin
                                 </a></li>
@@ -77,67 +79,61 @@ require_once "app.php";
                             </div>
                         </div>
                         <!--/.module-->
-                        <form class="form-horizontal btn-box row-fluid text-left">
+                        <div class="form-horizontal btn-box row-fluid text-left">
                             <div class="row px-5">
                                 <div class="control col-md-6 mb-3">
                                     <label class="label" for="basicinput">Nama Program</label>
                                     <div class="controls">
-                                        <input type="text" id="basicinput" placeholder="Nama Program" class="form-control">
+                                        <input type="text" id="NamaProgram" placeholder="Nama Program" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3 ">
                                     <label class="control-label" for="basicinput">Alamat/Lokasi</label>
                                     <div class="controls">
-                                        <input type="text" id="basicinput" placeholder="Alamat / Lokasi" class="form-control">
+                                        <input type="text" id="alamat" placeholder="Alamat / Lokasi" class="form-control">
                                     </div>
                                 </div>
-                                <div class="col-md-6 mb-3 ">
-                                    <label class="control-label" for="basicinput">Mulai Terkumpul</label>
-                                    <div class="controls">
-                                        <input type="text" id="basicinput" placeholder="Rp." class="form-control">
-                                    </div>
-                                </div>
-                                <div class="col-md-6 mb-3 ">
+                                <div class="col-md-12 mb-3 ">
                                     <label class="control-label" for="basicinput">Target Terkumpul</label>
                                     <div class="controls">
-                                        <input type="text" id="basicinput" placeholder="Rp." class="form-control">
+                                        <input type="text" id="TargetTerkumpul" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" placeholder="Rp." class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3 ">
                                     <label class="control-label" for="basicinput">Waktu Mulai</label>
                                     <div class="controls">
-                                        <input type="datetime-local" id="basicinput" class="form-control">
+                                        <input type="text" id="WaktuMulai" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3 ">
                                     <label class="control-label" for="basicinput">Waktu Akhir</label>
                                     <div class="controls">
-                                        <input type="datetime-local" id="basicinput" class="form-control">
+                                        <input type="text" id="WaktuAkhir" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3 ">
                                     <label class="control-label" for="basicinput">Gambar 1</label>
                                     <div class="controls">
-                                        <input type="datetime-local" id="basicinput" class="form-control">
+                                        <input type="file" id="Gambar1" class="form-control">
                                     </div>
                                 </div>
                                 <div class="col-md-6 mb-3 ">
                                     <label class="control-label" for="basicinput">Gambar 2</label>
                                     <div class="controls">
-                                        <input type="file" id="basicinput" class="form-control">
+                                        <input type="file" id="Gambar2" class="form-control">
                                     </div>
                                 </div>
                                 <div class="control col-md-12">
                                     <label class="control-label" for="basicinput">Detail</label>
                                     <div class="controls">
-                                        <textarea class="form-control" rows="5"></textarea>
+                                        <textarea class="form-control" id="Detail" rows="5" style="resize: none;"></textarea>
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Tambah</button>
+                                    <button class="btn btn-primary" onclick="TambahAmal()" type="submit" style="margin-top: 20px;">Tambah</button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                         <!--/.module-->
                     </div>
                     <!--/.content-->
@@ -157,6 +153,7 @@ require_once "app.php";
             <b class="copyright">&copy; 2021 Ridwan Amal </b>All rights reserved.
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="<?= BASE_URL; ?>/js/jquery-1.9.1.min.js" type="text/javascript"></script>
     <script src="<?= BASE_URL; ?>/js/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
     <script src="<?= BASE_URL; ?>/js/bootstrap.min.js" type="text/javascript"></script>
@@ -164,6 +161,9 @@ require_once "app.php";
     <script src="<?= BASE_URL; ?>/js/flot/jquery.flot.resize.js" type="text/javascript"></script>
     <script src="<?= BASE_URL; ?>/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
     <script src="<?= BASE_URL; ?>/js/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="<?= BASE_URL; ?>/JS/sweetalert2.all.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/JS/FormatMoney.js"></script>
     <script src="<?= BASE_URL; ?>/js/common.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/d1a508a7c1.js" crossorigin="anonymous"></script>
 

@@ -301,8 +301,18 @@ function hapusAmal($data)
         $oldImgLain = $result['gambar_lain'];
         // unlink old image
         $moveLocation = "../uploads/photos";
-        unlink($moveLocation . "/" . $oldImg);
-        unlink($moveLocation . "/" . $oldImgLain);
+
+        $pathOldImg = "../uploads/photos/$oldImg";
+        $pathOldImgLain = "../uploads/photos/$oldImgLain";
+
+        for ($index = 1; $index <= 2; $index++) {
+            if (is_file($pathOldImg) && $index == 1) {
+                unlink($moveLocation . "/" . $oldImg);
+            } else if (is_file($pathOldImgLain) && $index == 2) {
+                unlink($moveLocation . "/" . $oldImgLain);
+            }
+        }
+
         $sql = "DELETE FROM tbl_amal WHERE id_amal = '$idAmal'";
         mysqli_query($db, $sql);
         if (mysqli_affected_rows($db) > 0) {

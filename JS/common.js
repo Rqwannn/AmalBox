@@ -360,13 +360,13 @@ function HapusDataProgram (event, data){
 
 // Page Donatur
 
+const BodySetDonatur = document.querySelector('.BodySetDonatur');
+
 function CommandDonatur(status, data){
 	let setUrl = "http://localhost/AmalBox/Api/getAllDonatur.php";
 	if(status){
 		setUrl = `http://localhost/AmalBox/Api/getAllDonatur.php?status=${data}`
 	}
-
-	const BodySetDonatur = document.querySelector('.BodySetDonatur');
 
 	$.ajax({
 		url : setUrl,
@@ -410,7 +410,10 @@ function CommandDonatur(status, data){
 	})
 }
 
-CommandDonatur(true, 0);
+if(BodySetDonatur != null){
+	CommandDonatur(true, 0);
+}
+
 
 function SubmitDonatur(data){
 	Swal.fire({
@@ -513,4 +516,93 @@ function TambahDonatur(){
 			}
 		}
 	  });
+}
+
+// Page Tambah Amal
+
+if($( "#WaktuMulai" ) != null && $( "#WaktuAkhir" ) != null){
+	$( "#WaktuMulai" ).datepicker(			
+		{
+			minDate: new Date(),
+			dateFormat: 'yy-mm-dd'
+		}
+	)
+
+	$( "#WaktuAkhir" ).datepicker(
+		{
+			minDate: new Date(),
+			dateFormat: 'yy-mm-dd'
+		}
+	);
+}
+
+function TambahAmal(){
+	const NamaProgram = document.getElementById('NamaProgram');
+	const Alamat = document.getElementById('alamat');
+	const TargetTerkumpul = document.getElementById('TargetTerkumpul');
+	const Detail = document.getElementById('Detail');
+	const WaktuMulai = document.getElementById('WaktuMulai');
+	const WaktuAkhir = document.getElementById('WaktuAkhir');
+	const Gambar1 = document.getElementById('Gambar1').files[0];
+	const Gambar2 = document.getElementById('Gambar2').files[0];
+
+	let BaseData = new FormData();
+
+	Swal.fire({
+		title: 'Apakah Anda Yakin?',
+		text: "Pastikan Tidak Ada Field Yang Kosong!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: "#d33",
+		confirmButtonText: 'Submit',
+		cancelButtonText: "Close",
+	  }).then((result) => {
+		if (result.isConfirmed) {
+			if(NamaProgram.value.length == 0 || Alamat.value.length == 0 || TargetTerkumpul.value.length == 0 || WaktuMulai.value.length == 0
+				|| WaktuAkhir.value.length == 0 || !Gambar1 || !Gambar2 || Detail.value.length == 0){
+				Swal.fire(
+					"Ooppss..",
+					`Salah satu field ada yang kosong!`,
+					"error"
+				);
+			} else {
+				BaseData.append("judul", NamaProgram.value);
+				BaseData.append("dana", TargetTerkumpul.value);
+				BaseData.append("alamat", Alamat.value);
+				BaseData.append("detail", Detail.value);
+				BaseData.append("tgl_mulai", WaktuMulai.value);
+				BaseData.append("tgl_selesai", WaktuMulai.value);
+				BaseData.append("img", Gambar1);
+				BaseData.append("img_lain", Gambar2);
+
+				$.ajax({
+					url : "http://localhost/AmalBox/Api/tambahAmal.php",
+					type : 'POST',
+					dataType : 'JSON',
+					data : BaseData,
+					cache: false,
+                    contentType: false,
+                    processData: false,
+					success : (result) => {
+						Swal.fire({
+							title: 'Success',
+							text: `${result.message}`,
+							icon: 'success',
+							confirmButtonColor: '#3085d6',
+							confirmButtonText: 'Close'
+						  }).then((result) => {
+							if (result.isConfirmed) {
+								window.location.reload();
+							}
+						  });
+					},
+					error : (e) => {
+						console.log(e);
+					}
+				})
+			}
+		}
+	})
+
 }

@@ -4,12 +4,12 @@
 }
 
 :root {
-  --orange: #fb6340;
   --green: #2dce89;
   --red: #f5365c;
   --grey: #8898aa;
   --secondary: #f7fafc;
   --primary: #5e72e4;
+  --light: #ced4da;
 }
 
 .contentTable {
@@ -102,4 +102,15 @@
 .dataTables_paginate a {
   padding-bottom: 25px;
   margin: 15px 10px;
+}
+
+.ui-datepicker-next,
+.ui-datepicker-prev {
+  background: var(--light);
+  cursor: pointer;
+}
+
+.ui-datepicker-next:hover,
+.ui-datepicker-prev:hover {
+  background: var(--light);
 }
