@@ -237,8 +237,10 @@
 
 // JS YANG DIBUAT SENDIRI
 
+const Formater = new FormatMoney();
 const BodySetAdmin = document.querySelector('.BodySetAdmin');
-const BodySetDonatur = document.querySelector('.BodySetDonatur');
+
+// Page Dashbord
 
 function getDataTable(){
 	$("#TableDataProgram").DataTable({
@@ -312,34 +314,140 @@ if(BodySetAdmin != null){
 		  console.log(e);
 		}
 	  });
-} else if (BodySetDonatur != null){
-
 }
 
 function HapusDataProgram (event, data){
 	event.preventDefault();
-	$.ajax({
-		url : 'http://localhost/AmalBox/Api/hapusAmal.php',
-		type : 'POST',
-		dataType : 'JSON',
-		data : {
-			id_amal : data
-		},
-		success : (result) => {
-			Swal.fire({
-				title: 'Success',
-				text: `${result.message}`,
-				icon: 'success',
-				confirmButtonColor: '#3085d6',
-				confirmButtonText: 'Close'
-			  }).then((result) => {
-				if (result.isConfirmed) {
-					window.location.reload();
+
+	Swal.fire({
+		title: 'Apakah Anda Yakin?',
+		text: "Data akan segera di hapus!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: "#d33",
+		confirmButtonText: 'Submit',
+		cancelButtonText: "Close",
+	  }).then((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+				url : 'http://localhost/AmalBox/Api/hapusAmal.php',
+				type : 'POST',
+				dataType : 'JSON',
+				data : {
+					id_amal : data
+				},
+				success : (result) => {
+					Swal.fire({
+						title: 'Success',
+						text: `${result.message}`,
+						icon: 'success',
+						confirmButtonColor: '#3085d6',
+						confirmButtonText: 'Close'
+					  }).then((result) => {
+						if (result.isConfirmed) {
+							window.location.reload();
+						}
+					  });
+				},
+				error : (e) => {
+				  console.log(e);
 				}
-			  });
+			});
+		}
+	  });
+}
+
+// Page Donatur
+
+function CommandDonatur(status, data){
+	let setUrl = "http://localhost/AmalBox/Api/getAllDonatur.php";
+	if(status){
+		setUrl = `http://localhost/AmalBox/Api/getAllDonatur.php?status=${data}`
+	}
+
+	const BodySetDonatur = document.querySelector('.BodySetDonatur');
+
+	$.ajax({
+		url : setUrl,
+		type : 'GET',
+		dataType : 'JSON',
+		success : (result) => {
+			let setCard = "";
+			let number = 1;
+  
+			result.data.forEach((item) => {
+			  setCard += `<tr>
+			  <td>
+				  ${number++}
+			  </td>
+			  <td>
+				  ${item.nama_donatur}
+			  </td>
+			  <td class="center">
+			  	${Formater.toRupiah(item.jml_amal)}
+			  </td>
+			  <td>
+			  	${item.pesan}
+			  </td>
+			  <td class="center">
+			  	${item.tgl_amal}
+			  </td>
+			  <td>
+				  <a href="#" onclick="SubmitDonatur(${item.id_donatur})" class="btn small" id="check">
+					  <i class="far fa-check-circle"></i>
+				  </a>
+			  </td>
+		  </tr>`;
+			});
+  
+			BodySetDonatur.innerHTML = setCard;
+			getDataTable();
 		},
 		error : (e) => {
-		  console.log(e);
+			console.log(e);
+		},
+	})
+}
+
+CommandDonatur(true, 0);
+
+function SubmitDonatur(data){
+	Swal.fire({
+		title: 'Apakah Anda Yakin?',
+		text: "Data akan segera di proses!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: "#d33",
+		confirmButtonText: 'Submit',
+		cancelButtonText: "Close",
+	  }).then((result) => {
+		if (result.isConfirmed) {
+			$.ajax({
+				url : 'http://localhost/AmalBox/Api/submitAmal.php',
+				type : 'POST',
+				dataType : 'JSON',
+				data : {
+					id_donatur : data
+				},
+				success : (result) => {
+					Swal.fire({
+						title: 'Success',
+						text: `${result.message}`,
+						icon: 'success',
+						confirmButtonColor: '#3085d6',
+						confirmButtonText: 'Close'
+					  }).then((result) => {
+						if (result.isConfirmed) {
+							window.location.reload();
+						}
+					  });
+				},
+				error : (e) => {
+				  console.log(e);
+				}
+			});
 		}
-	});
+	  });
 }

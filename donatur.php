@@ -10,7 +10,7 @@ require_once "app.php";
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Edmin</title>
+        <title>Admin</title>
         <link type="text/css" href="<?= BASE_URL; ?>/css/theme.css" rel="stylesheet">
         <link rel="icon" href="<?= BASE_URL ?>/img/icon.png">
         <link type="text/css" href="<?= BASE_URL; ?>/css/bootstrap.min.css" rel="stylesheet">
@@ -111,32 +111,8 @@ require_once "app.php";
                                             </th>
                                         </tr>
                                     </thead>
-                                    <tbody>
-                                        <tr class="odd gradeX">
-                                            <td>
-                                                1
-                                            </td>
-                                            <td>
-                                                Junaedi
-                                            </td>
-                                            <td class="center">
-                                                200.000
-                                            </td>
-                                            <td>
-                                                semoga cepat sembuh
-                                            </td>
-                                            <td class="center">
-                                                01-15-21 00.00
-                                            </td>
-                                            <td>
-                                                <a href="#" class="btn small" id="check">
-                                                    <i class="far fa-check-circle"></i>
-                                                </a>
-                                                <a href="#" class="btn small" id="delete">
-                                                    <i class="fas fa-ban"></i>
-                                                </a>
-                                            </td>
-                                        </tr>
+                                    <tbody class="BodySetDonatur">
+
                                     </tbody>
                                 </table>
                             </div>
@@ -162,6 +138,8 @@ require_once "app.php";
     <script src="<?= BASE_URL; ?>/JS/flot/jquery.flot.js" type="text/javascript"></script>
     <script src="<?= BASE_URL; ?>/JS/flot/jquery.flot.resize.js" type="text/javascript"></script>
     <script src="<?= BASE_URL; ?>/JS/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/JS/FormatMoney.js"></script>
+    <script src="<?= BASE_URL; ?>/JS/sweetalert2.all.min.js" type="text/javascript"></script>
     <script src="<?= BASE_URL; ?>/JS/common.js" type="text/javascript"></script>
 
 </body>

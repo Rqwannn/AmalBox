@@ -142,6 +142,8 @@ require_once "app.php";
     <script src="<?= BASE_URL; ?>/JS/dataTables.bootstrap4.min.js" type="text/javascript"></script>
     <script src="<?= BASE_URL; ?>/JS/datatables/jquery.dataTables.js" type="text/javascript"></script>
     <script src="<?= BASE_URL; ?>/JS/sweetalert2.all.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/JS/FormatMoney.js"></script>
+
     <script src="<?= BASE_URL; ?>/JS/common.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/d1a508a7c1.js" crossorigin="anonymous"></script>
 
