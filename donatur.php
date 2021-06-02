@@ -17,6 +17,7 @@ require_once "app.php";
         <link type="text/css" href="<?= BASE_URL; ?>/css/bootstrap-responsive.min.css" rel="stylesheet">
         <link type="text/css" href="<?= BASE_URL; ?>/img/icons/css/font-awesome.css" rel="stylesheet">
         <link rel="stylesheet" href="<?= BASE_URL; ?>/css/dataTables.bootstrap4.min.css">
+        <link rel="stylesheet" href="<?= BASE_URL; ?>/css/admin.css">
         <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet">
         <script src="https://kit.fontawesome.com/d1a508a7c1.js" crossorigin="anonymous"></script>
         <link type="text/css" href='http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600' rel='stylesheet'>
@@ -49,9 +50,9 @@ require_once "app.php";
                 <div class="col-md-3">
                     <div class="sidebar">
                         <ul class="widget widget-menu unstyled" style="list-style-type: none;padding:0;">
-                            <li class="active"><a href="<?= BASE_URL; ?>/admin.php"><i class="menu-icon icon-dashboard"></i>Utama
+                            <li><a href="<?= BASE_URL; ?>/admin.php"><i class="menu-icon icon-dashboard"></i>Utama
                                 </a></li>
-                            <li><a href="<?= BASE_URL; ?>/donatur.php"><i class="menu-icon icon-inbox"></i>Dana Donatur<b class="label green pull-right">
+                            <li class="active"><a href="<?= BASE_URL; ?>/donatur.php"><i class="menu-icon icon-inbox"></i>Dana Donatur<b class="label green pull-right">
                                         11</b> </a></li>
                             <li class=""><a href="<?= BASE_URL; ?>/add-admin.php"><i class="menu-icon icon-dashboard"></i>Tambah Admin
                                 </a></li>
@@ -86,8 +87,8 @@ require_once "app.php";
                                 <h3>
                                     Tabel Data Donatur</h3>
                             </div>
-                            <div class="module-body table">
-                                <table cellpadding="0" cellspacing="0" border="0" class="datatable-1 table table-bordered table-striped	 display" width="100%">
+                            <div class="contentTable my-5">
+                                <table id="TableDataProgram" border="0" class="table table-hover table-resposive mt-4">
                                     <thead>
                                         <tr>
                                             <th>
@@ -137,28 +138,6 @@ require_once "app.php";
                                             </td>
                                         </tr>
                                     </tbody>
-                                    <tfoot>
-                                        <tr>
-                                            <th>
-                                                No
-                                            </th>
-                                            <th>
-                                                Nama Donatur
-                                            </th>
-                                            <th>
-                                                Jumlah Amal
-                                            </th>
-                                            <th>
-                                                Pesan
-                                            </th>
-                                            <th>
-                                                Waktu
-                                            </th>
-                                            <th>
-                                                Status
-                                            </th>
-                                        </tr>
-                                    </tfoot>
                                 </table>
                             </div>
                         </div>

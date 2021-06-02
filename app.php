@@ -404,7 +404,8 @@ function getAdmin($id)
     return mysqli_fetch_assoc($query);
 }
 
-function cariAmal($data) {
+function cariAmal($data)
+{
     global $db;
     $key = $data['key'];
 
@@ -424,6 +425,6 @@ function cariAmal($data) {
             "message" => "Data Not Found"
         ];
     }
-    
+
     return $data;
 }

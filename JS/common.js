@@ -238,6 +238,29 @@
 // JS YANG DIBUAT SENDIRI
 
 const BodySetAdmin = document.querySelector('.BodySetAdmin');
+const BodySetDonatur = document.querySelector('.BodySetDonatur');
+
+function getDataTable(){
+	$("#TableDataProgram").DataTable({
+		paging: true,
+		aLengthMenu: [
+			[10, 30, 50, -1],
+			[10, 30, 50, "All"],
+		],
+		searching: true,
+		ordering: true,
+		info: true,
+		autoWidth: true,
+		responsive: false,
+		language: {
+			search: "",
+		}
+	})
+	$('.dataTables_paginate').addClass('btn-group datatable-pagination');
+	$('.dataTables_paginate > a').wrapInner('<span />');
+	$('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
+	$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+}
 
 if(BodySetAdmin != null){
     $.ajax({
@@ -283,31 +306,14 @@ if(BodySetAdmin != null){
 		  });
 
 		  BodySetAdmin.innerHTML = setCard;
-
-		  $("#TableDataProgram").DataTable({
-            paging: true,
-            aLengthMenu: [
-                [10, 30, 50, -1],
-                [10, 30, 50, "All"],
-            ],
-            searching: true,
-            ordering: true,
-            info: true,
-            autoWidth: true,
-            responsive: false,
-            language: {
-                search: "",
-            }
-        })
-		$('.dataTables_paginate').addClass('btn-group datatable-pagination');
-        $('.dataTables_paginate > a').wrapInner('<span />');
-        $('.dataTables_paginate > a:first-child').append('<i class="icon-chevron-left shaded"></i>');
-        $('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
+		  getDataTable();
 		},
 		error : (e) => {
 		  console.log(e);
 		}
 	  });
+} else if (BodySetDonatur != null){
+
 }
 
 function HapusDataProgram (event, data){
