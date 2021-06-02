@@ -428,3 +428,16 @@ function cariAmal($data)
 
     return $data;
 }
+
+function getAllDonatur($data)
+{
+    global $db;
+    $status = isset($data['status']) ? $data['status'] : null;
+    $sql = "SELECT * FROM tbl_donatur";
+    if ($status != null) $sql .= " WHERE status = '$status'";
+
+    $query = mysqli_query($db, $sql);
+    $result = mysqli_fetch_all($query, MYSQLI_ASSOC);
+
+    return $result;
+}
