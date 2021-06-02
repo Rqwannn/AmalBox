@@ -99,7 +99,7 @@ require_once "app.php";
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary" onclick="TambahDonatur()" type="submit" style="margin-top: 20px;">Tambah</button>
+                                    <button class="btn btn-primary" onclick="TambahAdmin()" type="submit" style="margin-top: 20px;">Tambah</button>
                                 </div>
                             </div>
                         </div>

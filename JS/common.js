@@ -514,7 +514,7 @@ function SubmitDonatur(data){
 
 // Page Tambah Admin
 
-function TambahDonatur(){
+function TambahAdmin(){
 	const username = document.getElementById('username');
 	const email = document.getElementById('email');
 	const password = document.getElementById('password');
