@@ -451,3 +451,66 @@ function SubmitDonatur(data){
 		}
 	  });
 }
+
+// Page Tambah Admin
+
+function TambahDonatur(){
+	const username = document.getElementById('username');
+	const email = document.getElementById('email');
+	const password = document.getElementById('password');
+
+	Swal.fire({
+		title: 'Apakah Anda Yakin?',
+		text: "Pastikan Tidak Ada Field Yang Kosong!",
+		icon: 'warning',
+		showCancelButton: true,
+		confirmButtonColor: '#3085d6',
+		cancelButtonColor: "#d33",
+		confirmButtonText: 'Submit',
+		cancelButtonText: "Close",
+	  }).then((result) => {
+		if (result.isConfirmed) {
+
+			if(username.value.length == 0 || email.value.length == 0 || password.value.length == 0){
+				Swal.fire(
+					"Ooppss..",
+					`Salah satu field ada yang kosong!`,
+					"error"
+				);
+			} else if (!email.value.includes("@")) {
+				Swal.fire(
+					"Ooppss..",
+					`Email harus memiliki simbol @`,
+					"error"
+				);
+			} else {
+				$.ajax({
+					url : 'http://localhost/AmalBox/Api/addAdmin.php',
+					type : 'POST',
+					dataType : 'JSON',
+					data : {
+						username : username.value,
+						email : email.value,
+						password : password.value
+					},
+					success : (result) => {
+						Swal.fire({
+							title: 'Success',
+							text: `${result.message}`,
+							icon: 'success',
+							confirmButtonColor: '#3085d6',
+							confirmButtonText: 'Close'
+						  }).then((result) => {
+							if (result.isConfirmed) {
+								window.location.reload();
+							}
+						  });
+					},
+					error : (e) => {
+					  console.log(e);
+					}
+				});
+			}
+		}
+	  });
+}

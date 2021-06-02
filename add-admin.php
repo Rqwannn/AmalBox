@@ -78,7 +78,7 @@ require_once "app.php";
                             </div>
                         </div>
                         <!--/.module-->
-                        <form class="form-horizontal btn-box row-fluid">
+                        <div class="form-horizontal btn-box row-fluid">
                             <div class="row px-5 text-left">
                                 <div class="col-md-6 mb-3">
                                     <label class="control-label" for="username">Username</label>
@@ -99,10 +99,10 @@ require_once "app.php";
                                     </div>
                                 </div>
                                 <div class="col-md-12">
-                                    <button class="btn btn-primary" type="submit" style="margin-top: 20px;">Tambah</button>
+                                    <button class="btn btn-primary" onclick="TambahDonatur()" type="submit" style="margin-top: 20px;">Tambah</button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                         <!--/.module-->
                     </div>
                     <!--/.content-->
@@ -125,6 +125,8 @@ require_once "app.php";
     <script src="<?= BASE_URL; ?>/js/flot/jquery.flot.resize.js" type="text/javascript"></script>
     <script src="<?= BASE_URL; ?>/js/dataTables.bootstrap4.min.js" type="text/javascript"></script>
     <script src="<?= BASE_URL; ?>/js/datatables/jquery.dataTables.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL; ?>/JS/sweetalert2.all.min.js" type="text/javascript"></script>
+    <script src="<?= BASE_URL ?>/JS/FormatMoney.js"></script>
     <script src="<?= BASE_URL; ?>/js/common.js" type="text/javascript"></script>
     <script src="https://kit.fontawesome.com/d1a508a7c1.js" crossorigin="anonymous"></script>
 
