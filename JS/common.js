@@ -264,57 +264,63 @@ function getDataTable(){
 	$('.dataTables_paginate > a:last-child').append('<i class="icon-chevron-right shaded"></i>');
 }
 
-if(BodySetAdmin != null){
-    $.ajax({
-		url : 'http://localhost/AmalBox/Api/getAllAmal.php',
-		type : 'GET',
-		dataType : 'JSON',
-		success : (result) => {
-		  let setCard = "";
-		  let number = 1;
+$.ajax({
+	url : 'http://localhost/AmalBox/Api/getAllAmal.php',
+	type : 'GET',
+	dataType : 'JSON',
+	success : (result) => {
+		let setCard = "";
+		let number = 1;
+		
+		const Program = document.getElementById('JumlahProgram');
+		
+		Program.innerHTML = result.data.length;
+		
+		if(BodySetAdmin != null){
 
-		  result.data.forEach((item) => {
-			setCard += `<tr class="odd gradeX">
-			<td>
-				${number++}
-			</td>
-			<td>
-				${item.judul}
-			</td>
-			<td>
-				${item.alamat}
-			</td>
-			<td class="center">
-				${item.terkumpul}
-			</td>
-			<td class="center">
-				${item.dana}
-			</td>
-			<td>
-				${item.tgl_mulai}
-			</td>
-			<td>
-				${item.tgl_selesai}
-			</td>
-			<td>
-				<a href="#" onclick="EditDataProgram(event, ${item.id_amal})" class="btn small">
-					<i class="icon-edit"></i>
-				</a>
-				<a href="#" onclick="HapusDataProgram(event, ${item.id_amal})" class="btn small">
-					<i class="icon-trash text-danger"></i>
-				</a>
-			</td>
-		</tr>`;
-		  });
+			result.data.forEach((item) => {
+				setCard += `<tr class="odd gradeX">
+				<td>
+					${number++}
+				</td>
+				<td>
+					${item.judul}
+				</td>
+				<td>
+					${item.alamat}
+				</td>
+				<td class="center">
+					${item.terkumpul}
+				</td>
+				<td class="center">
+					${item.dana}
+				</td>
+				<td>
+					${item.tgl_mulai}
+				</td>
+				<td>
+					${item.tgl_selesai}
+				</td>
+				<td>
+					<a href="#" onclick="EditDataProgram(event, ${item.id_amal})" class="btn small">
+						<i class="icon-edit"></i>
+					</a>
+					<a href="#" onclick="HapusDataProgram(event, ${item.id_amal})" class="btn small">
+						<i class="icon-trash text-danger"></i>
+					</a>
+				</td>
+			</tr>`;
+			});
 
-		  BodySetAdmin.innerHTML = setCard;
-		  getDataTable();
+			BodySetAdmin.innerHTML = setCard;
+			getDataTable();
+			
+			}
 		},
 		error : (e) => {
 		  console.log(e);
 		}
 	  });
-}
 
 function HapusDataProgram (event, data){
 	event.preventDefault();
@@ -400,9 +406,12 @@ function CommandDonatur(status, data){
 			  </td>
 		  </tr>`;
 			});
-  
-			BodySetDonatur.innerHTML = setCard;
-			getDataTable();
+			
+			if(BodySetDonatur != null){
+				BodySetDonatur.innerHTML = setCard;
+				getDataTable();
+			}
+
 		},
 		error : (e) => {
 			console.log(e);
@@ -410,10 +419,58 @@ function CommandDonatur(status, data){
 	})
 }
 
-if(BodySetDonatur != null){
-	CommandDonatur(true, 0);
+CommandDonatur(true, 0);
+
+function CommandDonatur2(status, data){
+	let setUrl = "http://localhost/AmalBox/Api/getAllDonatur.php";
+	if(status){
+		setUrl = `http://localhost/AmalBox/Api/getAllDonatur.php?status=${data}`
+	}
+
+	$.ajax({
+		url : setUrl,
+		type : 'GET',
+		dataType : 'JSON',
+		success : (result) => {
+			let setDana = 0;
+
+			result.data.forEach((item) => {
+				setDana += parseInt(item.jml_amal);
+			});
+
+			const DanaTerkumpul = document.getElementById('DanaTerkumpul');
+			DanaTerkumpul.innerHTML = Formater.toRupiah(setDana);
+
+		},
+		error : (e) => {
+			console.log(e);
+		},
+	})
 }
 
+CommandDonatur2(true, 1);
+
+function CommandDonatur3(status, data){
+	let setUrl = "http://localhost/AmalBox/Api/getAllDonatur.php";
+	if(status){
+		setUrl = `http://localhost/AmalBox/Api/getAllDonatur.php?status=${data}`
+	}
+
+	$.ajax({
+		url : setUrl,
+		type : 'GET',
+		dataType : 'JSON',
+		success : (result) => {
+			const Donatur = document.getElementById('Donatur');
+			Donatur.innerHTML = result.data.length;
+		},
+		error : (e) => {
+			console.log(e);
+		},
+	})
+}
+
+CommandDonatur3(false, 0);
 
 function SubmitDonatur(data){
 	Swal.fire({

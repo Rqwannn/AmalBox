@@ -65,13 +65,13 @@ require_once "app.php";
                     <div class="content">
                         <div class="btn-controls">
                             <div class="btn-box-row row-fluid">
-                                <a href="#" class="btn-box big span4"><i class=" icon-random"></i><b>65</b>
+                                <a href="#" class="btn-box big span4"><i class=" icon-random"></i><b id="JumlahProgram">0</b>
                                     <p class="text-muted">
                                         Jumlah Program</p>
-                                </a><a href="#" class="btn-box big span4"><i class="icon-user"></i><b>15</b>
+                                </a><a href="#" class="btn-box big span4"><i class="icon-user"></i><b id="Donatur">0</b>
                                     <p class="text-muted">
                                         Donatur</p>
-                                </a><a href="#" class="btn-box big span4"><i class="icon-money"></i><b>15,152</b>
+                                </a><a href="#" class="btn-box big span4"><i class="icon-money"></i><b id="DanaTerkumpul">0</b>
                                     <p class="text-muted">
                                         Dana Terkumpul</p>
                                 </a>
