@@ -278,39 +278,42 @@ $.ajax({
 		
 		if(BodySetAdmin != null){
 
-			result.data.forEach((item) => {
-				setCard += `<tr class="odd gradeX">
-				<td>
-					${number++}
-				</td>
-				<td>
-					${item.judul}
-				</td>
-				<td>
-					${item.alamat}
-				</td>
-				<td class="center">
-					${item.terkumpul}
-				</td>
-				<td class="center">
-					${item.dana}
-				</td>
-				<td>
-					${item.tgl_mulai}
-				</td>
-				<td>
-					${item.tgl_selesai}
-				</td>
-				<td>
-					<a href="#" onclick="EditDataProgram(event, ${item.id_amal})" class="btn small">
-						<i class="icon-edit"></i>
-					</a>
-					<a href="#" onclick="HapusDataProgram(event, ${item.id_amal})" class="btn small">
-						<i class="icon-trash text-danger"></i>
-					</a>
-				</td>
-			</tr>`;
-			});
+			if(result.success){
+				result.data.forEach((item) => {
+					setCard += `<tr class="odd gradeX">
+					<td>
+						${number++}
+					</td>
+					<td>
+						${item.judul}
+					</td>
+					<td>
+						${item.alamat}
+					</td>
+					<td class="center">
+						${item.terkumpul}
+					</td>
+					<td class="center">
+						${item.dana}
+					</td>
+					<td>
+						${item.tgl_mulai}
+					</td>
+					<td>
+						${item.tgl_selesai}
+					</td>
+					<td>
+						<a href="#" onclick="EditDataProgram(event, ${item.id_amal})" class="btn small">
+							<i class="icon-edit"></i>
+						</a>
+						<a href="#" onclick="HapusDataProgram(event, ${item.id_amal})" class="btn small">
+							<i class="icon-trash text-danger"></i>
+						</a>
+					</td>
+				</tr>`;
+				});
+			}
+
 
 			BodySetAdmin.innerHTML = setCard;
 			getDataTable();
@@ -382,30 +385,32 @@ function CommandDonatur(status, data){
 			let setCard = "";
 			let number = 1;
   
-			result.data.forEach((item) => {
-			  setCard += `<tr>
-			  <td>
-				  ${number++}
-			  </td>
-			  <td>
-				  ${item.nama_donatur}
-			  </td>
-			  <td class="center">
-			  	${Formater.toRupiah(item.jml_amal)}
-			  </td>
-			  <td>
-			  	${item.pesan}
-			  </td>
-			  <td class="center">
-			  	${item.tgl_amal}
-			  </td>
-			  <td>
-				  <a href="#" onclick="SubmitDonatur(${item.id_donatur})" class="btn small" id="check">
-					  <i class="far fa-check-circle"></i>
-				  </a>
-			  </td>
-		  </tr>`;
-			});
+			if(result.success){
+				result.data.forEach((item) => {
+				  setCard += `<tr>
+				  <td>
+					  ${number++}
+				  </td>
+				  <td>
+					  ${item.nama_donatur}
+				  </td>
+				  <td class="center">
+					  ${Formater.toRupiah(item.jml_amal)}
+				  </td>
+				  <td>
+					  ${item.pesan}
+				  </td>
+				  <td class="center">
+					  ${item.tgl_amal}
+				  </td>
+				  <td>
+					  <a href="#" onclick="SubmitDonatur(${item.id_donatur})" class="btn small" id="check">
+						  <i class="far fa-check-circle"></i>
+					  </a>
+				  </td>
+			  </tr>`;
+				});
+			}
 			
 			if(BodySetDonatur != null){
 				BodySetDonatur.innerHTML = setCard;
