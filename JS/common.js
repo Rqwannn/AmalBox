@@ -303,7 +303,7 @@ $.ajax({
 						${item.tgl_selesai}
 					</td>
 					<td>
-						<a href="#" onclick="EditDataProgram(event, ${item.id_amal})" class="btn small">
+						<a href="edit-amal.php?id=${item.id_amal}" class="btn small">
 							<i class="icon-edit"></i>
 						</a>
 						<a href="#" onclick="HapusDataProgram(event, ${item.id_amal})" class="btn small">

@@ -3,7 +3,7 @@ session_start();
 require_once "app.php";
 
 if (!isset($_SESSION['auth'])) {
-    header("location:". BASE_URL . "/login.php");
+    header("location:" . BASE_URL . "/login.php");
 }
 
 ?>

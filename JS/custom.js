@@ -105,8 +105,10 @@ $(document).ready(function() {
         const DataWeb = document.querySelector('.DataWeb');
         const DataBase = document.querySelector('.DataBase');
 
-        DataWeb.innerHTML = result.data.length;
-        DataBase.innerHTML = result.data.length;
+        if(DataWeb != null && DataBase!= null){
+          DataWeb.innerHTML = result.data.length;
+          DataBase.innerHTML = result.data.length;
+        }
 
         const getAmal = document.querySelector('.getAmal');
         const getAmal2 = document.querySelector('.getAmal2');
