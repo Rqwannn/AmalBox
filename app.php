@@ -451,3 +451,25 @@ function getAllDonatur($data)
 
     return $result;
 }
+
+
+function login($data)
+{
+    global $db;
+    $username = $data['username'];
+    $password = $data['password'];
+    $turn = false;
+
+    $sql = "SELECT * FROM tbl_admin WHERE username = '$username' OR email = '$username'";
+    $queue = mysqli_query($db, $sql);
+    $query = mysqli_fetch_assoc($queue);
+    if ($query != null) {
+        $turn = $password == $query['password'];
+    }
+
+    $data = [
+        "status" => $turn,
+        "data" => $query
+    ];
+    return $data;
+}

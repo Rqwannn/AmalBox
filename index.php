@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 require_once "app.php";
 
 ?>
@@ -27,7 +27,7 @@ require_once "app.php";
     <div class="giftunggu"></div>
     <nav class="navbar fixed-top navbar-light bg-light opaque">
         <div class="container">
-            <a class="navbar-brand d-flex align-items-center justify-content-center" href="#">
+            <a class="navbar-brand d-flex align-items-center justify-content-center" href="<?= BASE_URL; ?>">
                 <div style="font-size: 35px;   font-family: system-ui, -apple-system, ' Segoe UI', Roboto, 'Helvetica Neue' , Arial, 'Noto Sans' , sans-serif, 'Apple Color Emoji' , 'Segoe UI Emoji' , 'Segoe UI Symbol' , 'Noto Color Emoji' ; color: #53657D">
                     RidwanAmal
                 </div>
@@ -35,7 +35,7 @@ require_once "app.php";
             <div class="btnzakatamal btnhead mr-auto">
                 <a href="<?= BASE_URL; ?>/all.php"><button class="p2 btn btn-custom" type="button">Amal</button></a>
             </div>
-            <a href="<?= BASE_URL; ?>/cart.php" title="Kotak Amal">
+            <a href="<?= BASE_URL; ?>/all.php" title="Kotak Amal">
                 <div class="kotakamal">
                     0
                 </div>
@@ -48,17 +48,15 @@ require_once "app.php";
 
             <div class="collapse navbar-collapse text-center" id="navbarsExample04">
                 <div class="btnzakatamal btncol">
-                    <a href="https://amalbox.org/zakat" title=""><button class="p2 btn btn-custom" type="button">Zakat</button></a>
-                    <a href="https://amalbox.org/amal"><button class="p2 btn btn-custom" type="button">Amal</button></a>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Tentang ZIS</a>
+                            <a class="nav-link" href="<?= BASE_URL; ?>">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/about">Tentang Kami</a>
+                            <a class="nav-link" href="<?= BASE_URL; ?>/all.php">Amal Lainnya</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="https://partner.amalbox.org">Galang Amal</a>
+                            <a class="nav-link" href="<?= BASE_URL; ?>/login.php">Login As Admin</a>
                         </li>
                     </ul>
                 </div>

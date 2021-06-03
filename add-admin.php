@@ -1,5 +1,10 @@
 <?php
+session_start();
 require_once "app.php";
+
+if (!isset($_SESSION['auth'])) {
+    header("location:". BASE_URL . "/login.php");
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -32,7 +37,7 @@ require_once "app.php";
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="#">Your Profile</a></li>
-                            <li><a href="#">Logout</a></li>
+                            <li><a href="<?= BASE_URL; ?>/logout.php">Logout</a></li>
                         </ul>
                     </li>
                 </ul>
@@ -55,7 +60,7 @@ require_once "app.php";
                                 </a></li>
                             <li class=""><a href="<?= BASE_URL; ?>/add-amal.php"><i class="menu-icon icon-dashboard"></i>Tambah Amal
                                 </a></li>
-                            <li><a href="#"><i class="menu-icon icon-signout"></i>Logout </a></li>
+                            <li><a href="<?= BASE_URL; ?>/logout.php"><i class="menu-icon icon-signout"></i>Logout </a></li>
                         </ul>
                     </div>
                     <!--/.sidebar-->
