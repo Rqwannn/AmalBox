@@ -25,21 +25,16 @@ require_once "app.php";
 
 <body>
     <div class="giftunggu"></div>
-    <nav class="navbar fixed-top navbar-light bg-light opaque">
+    <nav class="navbar fixed-top navbar-dark opaque" style="background-color: #011F37;">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center justify-content-center" href="<?= BASE_URL; ?>">
-                <div style="font-size: 35px;   font-family: system-ui, -apple-system, ' Segoe UI', Roboto, 'Helvetica Neue' , Arial, 'Noto Sans' , sans-serif, 'Apple Color Emoji' , 'Segoe UI Emoji' , 'Segoe UI Symbol' , 'Noto Color Emoji' ; color: #53657D">
-                    RidwanAmal
+                <div style="font-size: 35px;   font-family: system-ui, -apple-system, ' Segoe UI', Roboto, 'Helvetica Neue' , Arial, 'Noto Sans' , sans-serif, 'Apple Color Emoji' , 'Segoe UI Emoji' , 'Segoe UI Symbol' , 'Noto Color Emoji' ; color: #fff">
+                    <img src="<?= BASE_URL; ?>/img/icon2.png" alt="">
                 </div>
             </a>
             <div class="btnzakatamal btnhead mr-auto">
-                <a href="<?= BASE_URL; ?>/all.php"><button class="p2 btn btn-custom" type="button">Amal</button></a>
+                <a href="<?= BASE_URL; ?>/all.php"><button class="p2 btn btn-custom-white" type="button">Amal</button></a>
             </div>
-            <a href="<?= BASE_URL; ?>/all.php" title="Kotak Amal">
-                <div class="kotakamal">
-                    0
-                </div>
-            </a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-bar top-bar"></span>
                 <span class="icon-bar middle-bar"></span>
@@ -47,7 +42,7 @@ require_once "app.php";
             </button>
 
             <div class="collapse navbar-collapse text-center" id="navbarsExample04">
-                <div class="btnzakatamal btncol">
+                <div class="btnzakatamal btncol" style="background-color: #011F37;">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="<?= BASE_URL; ?>">Home</a>
@@ -68,8 +63,8 @@ require_once "app.php";
         <div class="container">
             <div class="row align-items-center h-full">
                 <div class="tengah col-lg-8 offset-lg-2">
-                    <h3 class="text-center">TEBAR AMAL RAIH BERKAH</h3>
-                    <div id="carouselContent" class="carousel slide" data-ride="carousel">
+                    <h3 class="text-center text-white">TEBAR AMAL RAIH BERKAH</h3>
+                    <div id="carouselContent" class="carousel slide text-white" data-ride="carousel">
                         <div class="carousel-inner" role="listbox">
                             <div class="carousel-item active text-center p-4">
                                 <p>
@@ -97,27 +92,27 @@ require_once "app.php";
                         </a>
                     </div>
                     <center>
-                        <a href="all.php" title="Hitung Zakat"> <button type="button" class="btn btn-custom wow fadeInRight">Beramal Sekarang</button></a>
+                        <a href="all.php" title="Hitung Zakat"> <button type="button" class="btn btn-custom-white wow fadeInRight">Beramal Sekarang</button></a>
                     </center>
                 </div>
             </div>
         </div>
     </section>
 
-    <div style="background-color: #307184;">
+    <div style="background-color: #000E18;">
 
         <div class="container">
             <div class="row pt-5 pb-5">
                 <div class="col-md-12 mt-5">
-                    <img src="<?= BASE_URL; ?>/Img/icon.png" class="gambartengah" style="max-width: 120px;">
+                    <img src="<?= BASE_URL; ?>/Img/kotak.png" class="gambartengah" style="max-width: 120px;">
                     <p class="text-center mt-3 px24" style="color: #fff">
-                        RidwanAmal merupakan platform online yang memudahkan masyarakat untuk beramal melalui berbagai pilihan program yang terseleksi, serta menggalang amal untuk mewujudkan inisiatif dan project sosial dalam ekosistem Islam.
+                        E-Jariyah merupakan platform online yang memudahkan masyarakat untuk beramal melalui berbagai pilihan program yang terseleksi, serta menggalang amal untuk mewujudkan inisiatif dan project sosial dalam ekosistem Islam.
                     </p>
 
                     <div class="container">
                         <div class="row pt-2 pb-5 justify-content-center">
                             <a href="<?= BASE_URL; ?>/about,php" title="Tentang AmalBox">
-                                <button type="button" class="btn btnsec btn-custom-white wow pulse">Tentang RidwanAmal</button>
+                                <button type="button" class="btn btnsec btn-custom-white wow pulse">Tentang E-Jariyah</button>
                             </a>
                         </div>
                     </div>
@@ -143,7 +138,7 @@ require_once "app.php";
             </div>
 
             <div class="row padding-top-5 justify-content-center">
-                <a href="<?= BASE_URL; ?>/all.php" class="btn btnsec btn-custom wow pulse">Program Lainnya</a>
+                <a href="<?= BASE_URL; ?>/all.php" class="btn btnsec btn-custom-white wow pulse">Program Lainnya</a>
             </div>
         </div>
     </section>
@@ -159,9 +154,9 @@ require_once "app.php";
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 footer-about wow fadeInUp">
-                        <img class="logo-footer" src="<?= BASE_URL; ?>/img/icon.png" alt="logo-footer" data-at2x="<?= BASE_URL; ?>/img/icon.png">
+                        <img class="logo-footer" src="<?= BASE_URL; ?>/img/kotak.png" alt="logo-footer" data-at2x="<?= BASE_URL; ?>/img/kotak.png">
                         <p>
-                            RidwanAmal merupakan marketplace untuk beramal yang berkomitmen dalam membantu menggalang dan menyalurkan amal
+                            E-Jariyah merupakan marketplace untuk beramal yang berkomitmen dalam membantu menggalang dan menyalurkan amal
                         </p>
                     </div>
                     <div class="col-md-4 offset-md-5 footer-contact wow fadeInDown">

@@ -141,11 +141,12 @@ $(document).ready(function() {
           } else {
             hari = 'Selesai';
           }
+          
   
           if(getAmal != null){
-            card += `<div class="item">
+            card += /* html*/ `<div class="item">
             <div class="">
-                <div class="card">
+                <div class="card bg-card">
                     <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
                         <div class="card-image">
                             <img class="img-fluid" src="${BASE_URL}/uploads/photos/${item.gambar}" alt="Card image cap">
@@ -166,20 +167,20 @@ $(document).ready(function() {
                         </span>
                     </div>
                     <div class="card-body">
-                        <div class="card-title ">
+                        <div class="card-title text-white">
                             <a href="${BASE_URL}/amal.php?id=${item.id_amal}">
-                                <h4 class="align-middle text-center">${item.judul}</h4>
+                                <h4 class="align-middle text-center text-white">${item.judul}</h4>
                             </a>
                         </div>
                         <p class="card-text">${item.detail}</p>
-                        <a href="${BASE_URL}/amal.php?id=${item.id_amal}" class="btn btn-custom w-100 mb-3">AMAL SEKARANG</a>
+                        <a href="${BASE_URL}/amal.php?id=${item.id_amal}" class="btn btn-custom-white w-100 mb-3">AMAL SEKARANG</a>
                         <div class="uploader d-flex justify-content-between">
                             <div class="p2 d-flex align-flex-center">
                                 <span class="">
-                                    <img src="${BASE_URL}/img/icon.png" class="rounded-circle">
+                                    <img src="${BASE_URL}/img/kotak.png" class="rounded-circle">
                                 </span>
                                 <span class="d-flex">
-                                    <a href="#" class="align-flex-center align-self-center">RidwanAmal</a>
+                                    <a href="#" class="align-flex-center align-self-center text-white">E-Jariyah</a>
                                 </span>
                             </div>
                             <div class="line-card p2 d-flex align-self-center">
@@ -189,7 +190,7 @@ $(document).ready(function() {
                                     <i class="fa fa-map-marker fa-2x align-self-center"></i>
                                 </span>
                                 <span class="lokasi d-flex">
-                                    <a href="#" class="justify-content-right align-self-center">${item.alamat}</a>
+                                    <a href="#" class="justify-content-right align-self-center text-white">${item.alamat}</a>
                                 </span>
                             </div>
                         </div>
@@ -199,7 +200,7 @@ $(document).ready(function() {
         </div>`;
           } else if(getAmal2 != null) {
             card += `<div class="col-lg-4">
-            <div class="card">
+            <div class="card bg-card">
                 <a href="${BASE_URL}/amal.php?id=${item.id_amal}" title="">
                     <div class="card-image">
                         <img class="img-fluid" src="${BASE_URL}/uploads/photos/${item.gambar}" alt="Card image cap">

@@ -1,6 +1,6 @@
 body {
-  color: #53657d;
-  background-color: #e6f2f2;
+  color: #fff;
+  background-color: #000e18;
   overflow-x: hidden;
 }
 @font-face {
@@ -16,7 +16,7 @@ body {
   src: url(../fonts/Raleway-SemiBold.ttf);
 }
 .bg-amalbox {
-  background-color: #3baba3 !important;
+  background-color: #000e18 !important;
 }
 a {
   cursor: pointer;
@@ -133,8 +133,14 @@ input.norek {
   width: 100%;
   height: 100%;
   z-index: 9999;
-  background: url(../img/giftunggu.gif) center no-repeat #e6f2f2;
+  background: url(../img/giftunggu2.gif) center no-repeat #011f37;
 }
+
+.bg-card {
+  color: #fff;
+  background-color: #222;
+}
+
 .custom-radio label {
   padding: 1em 2em;
   border-radius: 1em;
@@ -199,12 +205,12 @@ nav .kotakamal {
     0 3px 1px -2px rgba(0, 0, 0, 0.12), 0 1px 5px 0 rgba(0, 0, 0, 0.2);
 }
 .navbar-collapse.show {
-  background-color: rgb(248, 249, 250) !important;
+  background-color: #011F37;
 }
 .icon-bar {
   width: 26px;
   height: 3px;
-  background-color: #53667d;
+  background-color: #fff;
   display: block;
   transition: all 0.2s;
   margin-top: 4px;
@@ -309,8 +315,8 @@ section.banner .tengah button {
   width: 1.6rem;
   height: 1.6rem;
   background: transparent;
-  border-top: 0.4rem solid #3baba3;
-  border-right: 0.4rem solid #3baba3;
+  border-top: 0.4rem solid #fff;
+  border-right: 0.4rem solid #fff;
   box-shadow: 0 0 0 lightgray;
   -webkit-transition: all 200ms ease;
   transition: all 200ms ease;
@@ -334,12 +340,12 @@ section.banner .tengah button {
 }
 .card span.tag {
   position: absolute;
-  background-color: rgba(59, 171, 163, 0.6);
+  background-color: #ffcc29;
   padding: 0 0.4em;
   border-radius: 0.2em;
 }
 .card span.tag a {
-  color: #fff;
+  color: #011F37;
 }
 .card span.tag a:hover {
   text-decoration: underline;
@@ -363,7 +369,7 @@ section.banner .tengah button {
   margin-top: -5px;
 }
 .progress .progress-bar {
-  background-color: #3baba3;
+  background-color: #ffcc29;
 }
 .card h4 {
   line-height: 1;
@@ -884,20 +890,20 @@ section.selesai ul.timeline > li:before {
   z-index: 1;
 }
 .garis img {
-  width: 50px;
+  width: 75px;
   position: relative;
   display: block;
   margin: 0 auto;
   padding: 0.4em;
   z-index: 2;
-  background-color: #e6f2f2;
+  background-color: #000e18;
 }
 
 .footer-top {
   padding: 60px 0;
   text-align: left;
   color: #f0f0f0;
-  background: #444;
+  background: #000e18;
 }
 .footer-top h3 {
   padding-bottom: 10px;
@@ -944,7 +950,7 @@ section.selesai ul.timeline > li:before {
   padding: 15px 0 17px 0;
   text-align: left;
   color: #fff;
-  background: #3baba3;
+  background: #011f37;
 }
 .footer-social {
   padding-top: 3px;
@@ -1080,7 +1086,7 @@ hr.hijau {
   color: #3baba3 !important;
 }
 .tag {
-  background-color: rgba(59, 171, 163, 0.6);
+  background-color: #f3cb47;
   padding: 0.1em 0.6em;
   border-radius: 0.2em;
   display: inline-block;
@@ -1376,8 +1382,7 @@ section.howwework .t img {
   position: fixed;
   bottom: 20px;
   right: 20px;
-  background: #3baba3;
-  background: rgba(59, 171, 163, 0.7);
+  background: #011f37;
   width: 50px;
   height: 50px;
   display: block;
@@ -1391,6 +1396,7 @@ section.howwework .t img {
   -ms-transition: all 0.3s ease;
   -o-transition: all 0.3s ease;
   transition: all 0.3s ease;
+  z-index: 99;
 }
 #return-to-top i {
   color: #fff;
