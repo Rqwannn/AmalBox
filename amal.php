@@ -11,8 +11,8 @@ require_once "app.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <title>AmalBox</title>
-    <link rel="icon" href="<?= BASE_URL; ?>/img/icon.png">
+    <title>E-Jariyah | Charity Detail</title>
+    <link rel="icon" href="<?= BASE_URL; ?>/img/kotak.png">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/CSS/bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASE_URL; ?>/CSS/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="<?= BASE_URL; ?>/css/dataTables.bootstrap4.min.css">
@@ -25,21 +25,16 @@ require_once "app.php";
 
 <body>
     <div class="giftunggu"></div>
-    <nav class="navbar fixed-top navbar-light bg-light opaque">
+    <nav class="navbar fixed-top navbar-dark opaque" style="background-color: #011F37;">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center justify-content-center" href="<?= BASE_URL; ?>">
-                <div style="font-size: 35px;   font-family: system-ui, -apple-system, ' Segoe UI', Roboto, 'Helvetica Neue' , Arial, 'Noto Sans' , sans-serif, 'Apple Color Emoji' , 'Segoe UI Emoji' , 'Segoe UI Symbol' , 'Noto Color Emoji' ; color: #53657D">
-                    RidwanAmal
+                <div style="font-size: 35px;   font-family: system-ui, -apple-system, ' Segoe UI', Roboto, 'Helvetica Neue' , Arial, 'Noto Sans' , sans-serif, 'Apple Color Emoji' , 'Segoe UI Emoji' , 'Segoe UI Symbol' , 'Noto Color Emoji' ; color: #fff">
+                    <img src="<?= BASE_URL; ?>/img/icon2.png" alt="">
                 </div>
             </a>
             <div class="btnzakatamal btnhead mr-auto">
-                <a href="<?= BASE_URL; ?>/all.php"><button class="p2 btn btn-custom" type="button">Amal</button></a>
+                <a href="<?= BASE_URL; ?>/all.php"><button class="p2 btn btn-custom-white" type="button">Amal</button></a>
             </div>
-            <a href="<?= BASE_URL; ?>/all.php" title="Kotak Amal">
-                <div class="kotakamal">
-                    0
-                </div>
-            </a>
             <button class="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarsExample04" aria-controls="navbarsExample04" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="icon-bar top-bar"></span>
                 <span class="icon-bar middle-bar"></span>
@@ -47,7 +42,7 @@ require_once "app.php";
             </button>
 
             <div class="collapse navbar-collapse text-center" id="navbarsExample04">
-                <div class="btnzakatamal btncol">
+                <div class="btnzakatamal btncol" style="background-color: #011F37;">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
                             <a class="nav-link" href="<?= BASE_URL; ?>">Home</a>
@@ -107,11 +102,6 @@ require_once "app.php";
                             <div class="tab-pane fade show active" id="nav-detail" role="tabpanel" aria-labelledby="nav-detail-tab">
                                 <h2 class="text-center TitleAmal"></h2>
                                 <p class="ContentAmal">Donatur Tetap</p>
-
-                                <p>Download Form Pengisian Donatur di :&nbsp;<br />
-                                    <a href="https://bit.ly/amalbox-donatur">bit.ly/amalbox-donatur</a><br />
-                                    dan kirimkan ke <a href="mailto:info@amalbox.org?subject=Donatur%20Tetap" target="_blank">info@amalbox.org</a>
-                                </p>
                             </div>
 
                             <div class="tab-pane fade" id="nav-donatur" role="tabpanel" aria-labelledby="nav-donatur-tab">
@@ -124,7 +114,7 @@ require_once "app.php";
                 </div>
 
                 <div class="col-lg-4 custom-sidebar abs-bawah">
-                    <div class="sidebar">
+                    <div class="sidebar" style="background-color: #222;border: 1px solid #222;">
                         <h4 class="text-center TitleAmal"></h4>
                         <br>
                         <center>
@@ -165,10 +155,12 @@ require_once "app.php";
                         <div class="uploader d-flex justify-content-between">
                             <div class="p2 d-flex align-flex-center">
                                 <span class="">
-                                    <img src="<?= BASE_URL; ?>/img/icon.png" class="rounded-circle">
+                                    <img src="<?= BASE_URL; ?>/img/kotak.png" class="rounded-circle">
                                 </span>
                                 <span class="d-flex">
-                                    <a href="#" class="align-flex-center align-self-center">AmalBox</a>
+                                    <a href="#" class="align-flex-center align-self-center text-white">
+                                        E-Jariyah
+                                    </a>
                                 </span>
                             </div>
                             <div class="line-card p2 d-flex align-self-center">
@@ -178,7 +170,7 @@ require_once "app.php";
                                     <i class="fa fa-map-marker fa-2x align-self-center"></i>
                                 </span>
                                 <span class="lokasi d-flex">
-                                    <a href="#" class="justify-content-right alamatAmal align-self-center"></a>
+                                    <a href="#" class="justify-content-right text-white alamatAmal align-self-center"></a>
                                 </span>
                             </div>
                         </div>
@@ -199,22 +191,26 @@ require_once "app.php";
     </div>
 
 
+    <div class="garis">
+        <span></span>
+        <img src="<?= BASE_URL; ?>/Img/kotak.png">
+    </div>
 
     <footer>
         <div class="footer-top">
             <div class="container">
                 <div class="row">
                     <div class="col-md-3 footer-about wow fadeInUp">
-                        <img class="logo-footer" src="<?= BASE_URL; ?>/img/icon.png" alt="logo-footer" data-at2x="<?= BASE_URL; ?>/img/icon.png">
+                        <img class="logo-footer" src="<?= BASE_URL; ?>/img/kotak.png" alt="logo-footer" data-at2x="<?= BASE_URL; ?>/img/kotak.png">
                         <p>
-                            RidwanAmal merupakan marketplace untuk beramal yang berkomitmen dalam membantu menggalang dan menyalurkan amal
+                            E-Jariyah merupakan marketplace untuk beramal yang berkomitmen dalam membantu menggalang dan menyalurkan amal
                         </p>
                     </div>
                     <div class="col-md-4 offset-md-5 footer-contact wow fadeInDown">
                         <h3>Contact</h3>
-                        <p><i class="fa fa-map-marker"></i> Jl. Pahlawan Revolusi No.41 Jakarta</p>
-                        <p><i class="fa fa-phone"></i> Phone: 021 2208 6938</p>
-                        <p><i class="fa fa-envelope"></i> Email: <a href="mailto:hello@amalbox.org">info@amalbox.org</a></p>
+                        <p><i class="fa fa-map-marker"></i> Jl. Tapos</p>
+                        <p><i class="fa fa-phone"></i> Phone: 021 1234 1234</p>
+                        <p><i class="fa fa-envelope"></i> Email: <a href="#">info@RidwanAmal.com</a></p>
                     </div>
                 </div>
             </div>
@@ -223,12 +219,7 @@ require_once "app.php";
             <div class="container">
                 <div class="d-flex">
                     <div class="p2 footer-copyright">
-                        Copyright &copy; 2021 - Muhammad Ibnu
-                    </div>
-                    <div class="ml-auto p2 footer-social">
-                        <a href="http://facebook.com/amalboxorg" target="_blank"><i class="fa fa-facebook-f"></i></a>
-                        <a href="http://twitter.com/amalboxorg" target="_blank"><i class="fa fa-twitter"></i></a>
-                        <a href="http://instagram.com/amalboxorg" target="_blank"><i class="fa fa-instagram"></i></a>
+                        Copyright &copy; 2021 - Muhammad Ridwan
                     </div>
                 </div>
             </div>

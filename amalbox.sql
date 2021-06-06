@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Waktu pembuatan: 26 Bulan Mei 2021 pada 09.09
+-- Waktu pembuatan: 06 Jun 2021 pada 11.53
 -- Versi server: 10.4.17-MariaDB
 -- Versi PHP: 8.0.0
 
@@ -33,6 +33,13 @@ CREATE TABLE `tbl_admin` (
   `email` varchar(55) NOT NULL,
   `password` varchar(55) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data untuk tabel `tbl_admin`
+--
+
+INSERT INTO `tbl_admin` (`id_admin`, `username`, `email`, `password`) VALUES
+(3, 'admin', 'admin@gmail.com', 'admin');
 
 -- --------------------------------------------------------
 
@@ -88,7 +95,8 @@ INSERT INTO `tbl_donatur` (`id_donatur`, `nama_donatur`, `jml_amal`, `pesan`, `t
 (3, 'Rizki Ramadhan', 100000, 'semoga sembuh', '2021-05-30 03:00:00', 2, 'bQ9Mf2g9EsOZVpK0YKOp', 1),
 (4, 'Ridwan', 100000, 'alhamdullilah', '2021-05-25 12:00:00', 2, 'bQ9Mf2g9EsOZVpK0YKwr', 0),
 (5, 'Muhammad Raqwan', 250000, 'Bismillah', '2021-05-25 14:20:12', 2, 'ivZOZNDxgbFvzFhxY4k5', 0),
-(6, 'Rizki', 2000000, 'alhamdullilah', '2021-05-26 06:04:37', 4, 'VgNJE4sdJQOy67GHuhAb', 1);
+(6, 'Rizki', 2000000, 'alhamdullilah', '2021-05-26 06:04:37', 4, 'VgNJE4sdJQOy67GHuhAb', 1),
+(7, 'Kiki', 1200000, 'ammiin', '2021-05-31 11:36:09', 4, 'XH7RTBosLAWnR00LpqX1', 0);
 
 --
 -- Indexes for dumped tables
@@ -120,19 +128,19 @@ ALTER TABLE `tbl_donatur`
 -- AUTO_INCREMENT untuk tabel `tbl_admin`
 --
 ALTER TABLE `tbl_admin`
-  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id_admin` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_amal`
 --
 ALTER TABLE `tbl_amal`
-  MODIFY `id_amal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_amal` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=9;
 
 --
 -- AUTO_INCREMENT untuk tabel `tbl_donatur`
 --
 ALTER TABLE `tbl_donatur`
-  MODIFY `id_donatur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id_donatur` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

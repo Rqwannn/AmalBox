@@ -11,7 +11,7 @@ require_once "app.php";
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
-    <link rel="icon" href="<?= BASE_URL ?>/img/icon.png">
+    <link rel="icon" href="<?= BASE_URL ?>/img/kotak.png">
     <link rel="stylesheet" href="<?= BASE_URL ?>/CSS/bootstrap.min.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/CSS/font-awesome.min.css">
     <link rel="stylesheet" href="<?= BASE_URL ?>/CSS/animate.css">
@@ -20,7 +20,7 @@ require_once "app.php";
     <link rel="stylesheet" href="<?= BASE_URL ?>/CSS/style.css">
     <script src="https://kit.fontawesome.com/d1a508a7c1.js" crossorigin="anonymous"></script>
 
-    <title>RidwanAmal</title>
+    <title>E-Jariyah | Home</title>
 </head>
 
 <body>

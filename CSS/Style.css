@@ -1028,18 +1028,18 @@ section.detail nav.tab {
   margin-top: 2em;
 }
 section.detail nav.tab a {
-  color: #3b5d77;
+  color: #fff;
 }
 section.detail nav.tab .nav-link.active {
-  background-color: #3baba3;
-  color: #fafafa;
+  background-color: #ffcc29;
+  color: #011F37;
 }
 section.detail nav.tab .nav-link:hover {
-  background-color: #f8f9fa;
-  color: #3b5d77;
+  background-color: #ffcc29;
+  color: #011F37;
 }
 section.detail .konten-detail {
-  background-color: #f8f9fa;
+  background-color: #222;
   padding: 0.6em;
   min-height: 700px;
 }
@@ -1070,10 +1070,10 @@ section.detail .konten-detail .donatur img {
 section.detail .sidebar,
 section.amal .sidebar,
 .box {
-  background-color: #f8f9fa;
+  background-color: #222;
   border-radius: 0.4em;
   padding: 1em;
-  border: 1px solid #e6eaea;
+  border: 1px solid #222;
   margin-bottom: 1em;
 }
 section.amal .sidebarlist a {
